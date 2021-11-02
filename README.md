@@ -8,4 +8,6 @@ https://app.forestry.io/
 ## cdn 图片地址样例
 https://cdn.jsdelivr.net/gh/KowloonZh/imgse@main/fund/2021/2021-10-19-1-huangli.jpg
 
+## 刷新 cdn
+https://purge.jsdelivr.net/gh/KowloonZh/imgse@main/fund/2021/2021-10-19-1-huangli.jpg
 
