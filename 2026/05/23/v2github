@@ -1,0 +1,137 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+setopt extended_glob
+
+usage() {
+  cat <<'USAGE'
+Usage:
+  v2github <file> [target-path]
+
+Publishes a file to kowloonzh/imgse and prints the GitHub Pages URL.
+
+Examples:
+  v2github ./report.html
+  v2github ./report.html fund/2023/2023-01-03-74-pie.html
+
+Environment:
+  V2GITHUB_REPO_URL     Git repository URL. Default: git@github.com:kowloonzh/imgse.git
+  V2GITHUB_REPO_DIR     Local repository cache. Default: $HOME/.cache/v2github/imgse
+  V2GITHUB_PAGES_BASE   Pages base URL. Default: https://kowloonzh.github.io/imgse
+  V2GITHUB_DATE         Date prefix for default target path, in YYYY/MM/DD format.
+  V2GITHUB_DRY_RUN      Set to 1 to validate and print the URL without git/copy/push.
+USAGE
+}
+
+die() {
+  local message="$1"
+  local code="${2:-1}"
+  print -u2 "v2github: $message"
+  exit "$code"
+}
+
+safe_basename() {
+  local name="$1"
+  local cleaned
+
+  cleaned="$(print -r -- "$name" | LC_ALL=C sed -E 's/[^A-Za-z0-9._-]+/-/g; s/^-+//; s/-+$//')"
+  [[ -n "$cleaned" ]] || die "could not create a safe target filename from '$name'" 2
+  print -r -- "$cleaned"
+}
+
+validate_source_file() {
+  local source_file="$1"
+
+  [[ -f "$source_file" ]] || die "file not found: $source_file" 2
+}
+
+validate_target_path() {
+  local target="$1"
+  local segment
+
+  [[ -n "$target" ]] || die "target path cannot be empty" 2
+  [[ "$target" != /* ]] || die "target path must be relative: $target" 2
+  [[ "$target" != *\\* ]] || die "target path cannot contain backslashes: $target" 2
+  [[ "$target" == [A-Za-z0-9._/-]## ]] || die "target path may only contain letters, numbers, dots, underscores, hyphens, and slashes: $target" 2
+
+  for segment in "${(@s:/:)target}"; do
+    [[ -n "$segment" ]] || die "target path cannot contain empty segments: $target" 2
+    [[ "$segment" != "." ]] || die "target path cannot contain '.' segments: $target" 2
+    [[ "$segment" != ".." ]] || die "target path cannot contain '..' segments: $target" 2
+  done
+}
+
+run_or_echo() {
+  if [[ "${V2GITHUB_DRY_RUN:-0}" == "1" ]]; then
+    print -u2 "+ $*"
+  else
+    "$@"
+  fi
+}
+
+if (( $# == 1 )) && [[ "$1" == "--help" || "$1" == "-h" ]]; then
+  usage
+  exit 0
+fi
+
+(( $# >= 1 && $# <= 2 )) || {
+  usage >&2
+  exit 2
+}
+
+source_file="$1"
+validate_source_file "$source_file"
+
+if (( $# == 2 )); then
+  target_path="${2#./}"
+else
+  date_prefix="${V2GITHUB_DATE:-$(date +%Y/%m/%d)}"
+  target_path="$date_prefix/$(safe_basename "${source_file:t}")"
+fi
+
+validate_target_path "$target_path"
+
+repo_url="${V2GITHUB_REPO_URL:-git@github.com:kowloonzh/imgse.git}"
+repo_dir="${V2GITHUB_REPO_DIR:-$HOME/.cache/v2github/imgse}"
+pages_base="${V2GITHUB_PAGES_BASE:-https://kowloonzh.github.io/imgse}"
+pages_base="${pages_base%/}"
+destination="$repo_dir/$target_path"
+page_url="$pages_base/$target_path"
+
+if [[ "${V2GITHUB_DRY_RUN:-0}" == "1" ]]; then
+  if [[ -d "$repo_dir/.git" ]]; then
+    run_or_echo git -C "$repo_dir" pull --ff-only
+  else
+    run_or_echo mkdir -p "${repo_dir:h}"
+    run_or_echo git clone "$repo_url" "$repo_dir"
+  fi
+  run_or_echo mkdir -p "${destination:h}"
+  run_or_echo cp "$source_file" "$destination"
+  run_or_echo git -C "$repo_dir" add "$target_path"
+  run_or_echo git -C "$repo_dir" commit -m "publish: $target_path"
+  run_or_echo git -C "$repo_dir" push
+  print -r -- "$page_url"
+  exit 0
+fi
+
+if [[ -d "$repo_dir/.git" ]]; then
+  git -C "$repo_dir" pull --ff-only
+else
+  mkdir -p "${repo_dir:h}"
+  git clone "$repo_url" "$repo_dir"
+fi
+
+mkdir -p "${destination:h}"
+cp "$source_file" "$destination"
+
+git -C "$repo_dir" add "$target_path"
+
+if git -C "$repo_dir" diff --cached --quiet -- "$target_path"; then
+  print -u2 "v2github: no content changes for $target_path"
+  print -r -- "$page_url"
+  exit 0
+fi
+
+git -C "$repo_dir" commit -m "publish: $target_path"
+git -C "$repo_dir" push
+
+print -r -- "$page_url"
