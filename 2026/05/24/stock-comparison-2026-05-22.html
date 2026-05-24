@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>财报分析对比 - 2026-05-22</title>
+  <style>
+    :root {
+      --bg: #f6f7f4;
+      --panel: #ffffff;
+      --panel-2: #f0f3f6;
+      --ink: #17202a;
+      --muted: #64707d;
+      --line: #dbe1e6;
+      --green: #116b4f;
+      --blue: #235a97;
+      --red: #a23b3b;
+      --amber: #9a621b;
+      --cyan: #1f6f7a;
+      --shadow: 0 12px 32px rgba(23, 32, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    header {
+      background: #17202a;
+      color: #fff;
+      border-bottom: 6px solid #d7b56d;
+    }
+
+    .wrap {
+      width: min(1280px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      min-height: 196px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      align-items: end;
+      padding: 34px 0 26px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 64px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      font-weight: 760;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 760px;
+      color: #dce4ea;
+      font-size: 15px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 84px;
+    }
+
+    .metric b {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metric span {
+      color: #c5d0da;
+      font-size: 13px;
+    }
+
+    main { padding: 28px 0 42px; }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      min-height: 38px;
+      border-radius: 7px;
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button[aria-pressed="true"] {
+      background: #17202a;
+      border-color: #17202a;
+      color: #fff;
+    }
+
+    .search {
+      min-width: min(320px, 100%);
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 8px 12px;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .leader {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .leader-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      min-height: 148px;
+    }
+
+    .leader-card h2 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 680;
+    }
+
+    .leader-card strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .leader-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      margin-top: 22px;
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .table-wrap {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 1120px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 12px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: #eef2f5;
+      z-index: 1;
+      color: #35414e;
+      font-size: 12px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    td.num, th.num { text-align: right; white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+
+    .name {
+      display: grid;
+      gap: 2px;
+      min-width: 116px;
+    }
+
+    .name b { font-size: 15px; }
+    .name span { color: var(--muted); font-size: 12px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 680;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .buy { background: #e5f4ec; color: var(--green); border-color: #b8dfc9; }
+    .hold { background: #e8f0fa; color: var(--blue); border-color: #c3d5ee; }
+    .watch { background: #fff3df; color: var(--amber); border-color: #efd4a5; }
+    .avoid { background: #fae9e9; color: var(--red); border-color: #edc4c4; }
+    .quality { background: #eef2f5; color: #44505c; border-color: #d7dfe6; }
+
+    .bars {
+      display: grid;
+      gap: 8px;
+      min-width: 180px;
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #e5e9ee;
+      overflow: hidden;
+    }
+
+    .bar > i {
+      display: block;
+      height: 100%;
+      width: calc(var(--score) * 1%);
+      background: var(--score-color, var(--blue));
+    }
+
+    .scoreline {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stock-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 238px;
+      display: grid;
+      gap: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .stock-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .stock-head h3 {
+      margin: 0;
+      font-size: 19px;
+    }
+
+    .stock-head small {
+      display: block;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .kv {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .kv div {
+      background: var(--panel-2);
+      border-radius: 7px;
+      padding: 10px;
+      min-height: 66px;
+    }
+
+    .kv span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .kv b {
+      font-size: 16px;
+    }
+
+    .note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .risk {
+      margin: 0;
+      padding-left: 18px;
+      color: #394552;
+      font-size: 13px;
+    }
+
+    .risk li { margin: 3px 0; }
+
+    footer {
+      color: var(--muted);
+      font-size: 12px;
+      padding: 18px 0 28px;
+    }
+
+    @media (max-width: 980px) {
+      .topbar,
+      .leader,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 20px, 1280px); }
+      .summary-grid, .kv { grid-template-columns: 1fr; }
+      h1 { font-size: 36px; }
+      .toolbar { align-items: stretch; }
+      .tabs, .search { width: 100%; }
+      button { flex: 1 1 auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <div>
+        <h1>财报分析对比</h1>
+        <p class="subtitle">基于本轮已完成的 financial-report-reader 财报分析结果汇总。行情快照主要来自 2026-05-22，结论为区间判断，不构成投资建议。</p>
+      </div>
+      <div class="summary-grid">
+        <div class="metric"><b>11</b><span>已分析公司</span></div>
+        <div class="metric"><b>5</b><span>当前更值得重点跟踪</span></div>
+        <div class="metric"><b>2</b><span>偏高估或暂不买</span></div>
+        <div class="metric"><b>1</b><span>若只能选一只的历史选择：海尔智家胜过长江电力</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="toolbar">
+      <div class="tabs" role="group" aria-label="筛选">
+        <button type="button" data-filter="all" aria-pressed="true">全部</button>
+        <button type="button" data-filter="buy">可关注买点</button>
+        <button type="button" data-filter="hold">持有区</button>
+        <button type="button" data-filter="watch">继续观察</button>
+        <button type="button" data-filter="avoid">暂不买</button>
+      </div>
+      <input class="search" id="search" type="search" placeholder="搜索公司、代码、行业" />
+    </div>
+
+    <section class="leader" aria-label="核心结论">
+      <article class="leader-card">
+        <h2>综合首选</h2>
+        <strong>海尔智家 / 美的集团</strong>
+        <p>家电龙头在业务质量、现金流和估值安全边际之间较均衡；此前二选一时海尔智家优先于长江电力。</p>
+      </article>
+      <article class="leader-card">
+        <h2>稳健收息</h2>
+        <strong>招商银行 / 农业银行 / 交通银行</strong>
+        <p>银行股估值不贵、分红稳定；招商银行质量更强，农行和交行更偏高股息低增长。</p>
+      </article>
+      <article class="leader-card">
+        <h2>质量好但等价格</h2>
+        <strong>中国移动 / 长江电力</strong>
+        <p>公司质量高，当前价格更多是持有或观察，等待更舒服的估值位置。</p>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2>总览表</h2>
+      <div class="table-wrap">
+        <table id="stocks">
+          <thead>
+            <tr>
+              <th>公司</th>
+              <th>行业</th>
+              <th>结论</th>
+              <th>质量</th>
+              <th class="num">当前价</th>
+              <th class="num">内在价值区间</th>
+              <th class="num">理想买入价</th>
+              <th>评分</th>
+              <th>一句话</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>公司卡片</h2>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <footer>
+      数据来自本轮对话中已生成的财报分析结论；海尔智家和长江电力的部分区间在本摘要页只保留结论性口径。页面文件生成时间：2026-05-22。
+    </footer>
+  </main>
+
+  <script>
+    const stocks = [
+      {
+        code: "600690",
+        name: "海尔智家",
+        sector: "家电 / 全球化消费",
+        conclusion: "轻仓买入 / 观察",
+        category: "buy",
+        quality: "良好",
+        price: "20.36",
+        valueRange: "有安全边际",
+        ideal: "未在摘要中保留",
+        qualityScore: 82,
+        valuationScore: 76,
+        totalScore: 80,
+        reason: "估值安全边际好于长江电力，经营质量与全球化能力较稳。",
+        risks: ["海外需求和汇率波动", "家电竞争和地产链影响", "原材料价格波动"]
+      },
+      {
+        code: "000333",
+        name: "美的集团",
+        sector: "家电 / 全球化制造",
+        conclusion: "轻仓买入 / 持有",
+        category: "buy",
+        quality: "优秀",
+        price: "80.28",
+        valueRange: "75.50 - 98.73",
+        ideal: "60.98",
+        qualityScore: 88,
+        valuationScore: 74,
+        totalScore: 81,
+        reason: "现金流、分红和经营质量较强，当前处在轻仓区，但理想买点需要明显回落。",
+        risks: ["海外需求和汇率", "原材料价格", "家电和机器人业务竞争"]
+      },
+      {
+        code: "600900",
+        name: "长江电力",
+        sector: "水电 / 公用事业",
+        conclusion: "持有 / 观察",
+        category: "hold",
+        quality: "优秀",
+        price: "26.61",
+        valueRange: "偏接近合理",
+        ideal: "未在摘要中保留",
+        qualityScore: 92,
+        valuationScore: 58,
+        totalScore: 74,
+        reason: "资产质量和现金流强，但好公司需要等更好的买入价格。",
+        risks: ["来水波动", "电价和监管政策", "估值长期偏高"]
+      },
+      {
+        code: "600941",
+        name: "中国移动",
+        sector: "通信运营商",
+        conclusion: "持有 / 观察",
+        category: "hold",
+        quality: "优秀",
+        price: "96.17",
+        valueRange: "约 94.01 合理值",
+        ideal: "65.81",
+        qualityScore: 91,
+        valuationScore: 55,
+        totalScore: 73,
+        reason: "现金流和分红质量高，当前价格接近合理值，不是强击球区。",
+        risks: ["资本开支", "ARPU 增长放缓", "云和政企业务竞争"]
+      },
+      {
+        code: "603986",
+        name: "兆易创新",
+        sector: "半导体 / 存储与 MCU",
+        conclusion: "继续观察 / 暂不买",
+        category: "avoid",
+        quality: "良好",
+        price: "443.64",
+        valueRange: "183.43 - 288.24",
+        ideal: "165.08",
+        qualityScore: 70,
+        valuationScore: 18,
+        totalScore: 44,
+        reason: "行业弹性大，但当前价格显著高于财报估值区间。",
+        risks: ["半导体周期", "高估值回撤", "库存和价格波动"]
+      },
+      {
+        code: "600886",
+        name: "国投电力",
+        sector: "电力 / 水火新能源",
+        conclusion: "持有 / 继续观察",
+        category: "hold",
+        quality: "良好",
+        price: "13.33",
+        valueRange: "11.14 - 14.86",
+        ideal: "9.10",
+        qualityScore: 78,
+        valuationScore: 63,
+        totalScore: 70,
+        reason: "价格在估值区间内，偏持有；理想买点仍需更低价格。",
+        risks: ["电价波动", "煤电成本", "新能源消纳"]
+      },
+      {
+        code: "600050",
+        name: "中国联通",
+        sector: "通信运营商",
+        conclusion: "持有 / 继续观察",
+        category: "hold",
+        quality: "一般偏良好",
+        price: "4.48",
+        valueRange: "3.74 - 4.89",
+        ideal: "3.02",
+        qualityScore: 66,
+        valuationScore: 62,
+        totalScore: 64,
+        reason: "估值不离谱，但基本面质量弱于中国移动。",
+        risks: ["行业竞争", "资本开支", "盈利弹性有限"]
+      },
+      {
+        code: "601328",
+        name: "交通银行",
+        sector: "银行",
+        conclusion: "轻仓区 / 持有",
+        category: "buy",
+        quality: "良好",
+        price: "6.72",
+        valueRange: "6.00 - 8.18",
+        ideal: "4.96",
+        qualityScore: 74,
+        valuationScore: 72,
+        totalScore: 73,
+        reason: "估值处于轻仓至持有区，分红属性较强。",
+        risks: ["净息差收窄", "资产质量", "银行低增长"]
+      },
+      {
+        code: "600036",
+        name: "招商银行",
+        sector: "银行 / 零售金融",
+        conclusion: "轻仓买入 / 持有",
+        category: "buy",
+        quality: "优秀",
+        price: "37.02",
+        valueRange: "35.86 - 47.82",
+        ideal: "29.29",
+        qualityScore: 90,
+        valuationScore: 75,
+        totalScore: 82,
+        reason: "ROE、资产质量和资本充足率较强，当前估值偏低，但不是重仓击球区。",
+        risks: ["净息差下行", "房地产和消费贷资产质量", "财富管理收入波动"]
+      },
+      {
+        code: "600025",
+        name: "华能水电",
+        sector: "水电 / 清洁能源",
+        conclusion: "继续观察 / 当前不买",
+        category: "watch",
+        quality: "良好",
+        price: "9.24",
+        valueRange: "6.42 - 8.25",
+        ideal: "5.13",
+        qualityScore: 80,
+        valuationScore: 37,
+        totalScore: 58,
+        reason: "资产优质、现金流强，但当前价高于乐观价值区间。",
+        risks: ["来水风险", "电力市场化", "高资本开支和债务"]
+      },
+      {
+        code: "601288",
+        name: "农业银行",
+        sector: "银行",
+        conclusion: "持有 / 等回落",
+        category: "hold",
+        quality: "优秀",
+        price: "6.49",
+        valueRange: "5.47 - 7.15",
+        ideal: "4.41",
+        qualityScore: 86,
+        valuationScore: 66,
+        totalScore: 76,
+        reason: "资产质量和分红稳定，当前处于持有区，安全边际一般。",
+        risks: ["净息差下行", "信用周期", "资本充足率回落"]
+      }
+    ];
+
+    const categoryClass = {
+      buy: "buy",
+      hold: "hold",
+      watch: "watch",
+      avoid: "avoid"
+    };
+
+    const categoryLabel = {
+      buy: "可关注买点",
+      hold: "持有区",
+      watch: "继续观察",
+      avoid: "暂不买"
+    };
+
+    const tbody = document.querySelector("#stocks tbody");
+    const cards = document.querySelector("#cards");
+    const buttons = document.querySelectorAll("[data-filter]");
+    const search = document.querySelector("#search");
+    let activeFilter = "all";
+
+    function scoreColor(score) {
+      if (score >= 76) return "var(--green)";
+      if (score >= 64) return "var(--blue)";
+      if (score >= 55) return "var(--amber)";
+      return "var(--red)";
+    }
+
+    function visibleStocks() {
+      const q = search.value.trim().toLowerCase();
+      return stocks.filter(s => {
+        const okFilter = activeFilter === "all" || s.category === activeFilter;
+        const haystack = `${s.code} ${s.name} ${s.sector} ${s.conclusion}`.toLowerCase();
+        return okFilter && (!q || haystack.includes(q));
+      });
+    }
+
+    function render() {
+      const rows = visibleStocks();
+      tbody.innerHTML = rows.map(s => `
+        <tr>
+          <td><span class="name"><b>${s.name}</b><span>${s.code}</span></span></td>
+          <td>${s.sector}</td>
+          <td><span class="badge ${categoryClass[s.category]}">${s.conclusion}</span></td>
+          <td><span class="badge quality">${s.quality}</span></td>
+          <td class="num">${s.price}</td>
+          <td class="num">${s.valueRange}</td>
+          <td class="num">${s.ideal}</td>
+          <td>
+            <div class="bars">
+              <div class="scoreline"><span>综合</span><b>${s.totalScore}</b></div>
+              <div class="bar" style="--score:${s.totalScore}; --score-color:${scoreColor(s.totalScore)}"><i></i></div>
+            </div>
+          </td>
+          <td>${s.reason}</td>
+        </tr>
+      `).join("");
+
+      cards.innerHTML = rows.map(s => `
+        <article class="stock-card">
+          <div class="stock-head">
+            <div>
+              <h3>${s.name}</h3>
+              <small>${s.code} · ${s.sector}</small>
+            </div>
+            <span class="badge ${categoryClass[s.category]}">${categoryLabel[s.category]}</span>
+          </div>
+          <div class="kv">
+            <div><span>当前价</span><b>${s.price}</b></div>
+            <div><span>价值区间</span><b>${s.valueRange}</b></div>
+            <div><span>理想买点</span><b>${s.ideal}</b></div>
+          </div>
+          <p class="note">${s.reason}</p>
+          <ul class="risk">${s.risks.map(r => `<li>${r}</li>`).join("")}</ul>
+        </article>
+      `).join("");
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        buttons.forEach(b => b.setAttribute("aria-pressed", String(b === button)));
+        render();
+      });
+    });
+
+    search.addEventListener("input", render);
+    render();
+  </script>
+</body>
+</html>
