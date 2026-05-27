@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeWrite 主题画廊</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0f0f0f; color: #fff; }
+.header { text-align: center; padding: 40px 20px 20px; }
+.header h1 { font-size: 28px; font-weight: 700; }
+.header p { color: #888; margin-top: 8px; font-size: 15px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; padding: 24px; max-width: 1440px; margin: 0 auto; }
+.theme-card { background: #1a1a1a; border-radius: 12px; padding: 16px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.theme-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+.theme-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.theme-desc { font-size: 13px; color: #888; margin-bottom: 12px; }
+.phone-frame { background: #fff; border-radius: 8px; overflow: hidden; max-height: 480px; overflow-y: auto; }
+.phone-content { padding: 16px; font-size: 14px; transform: scale(0.85); transform-origin: top left; width: 118%; }
+.copy-btn { margin-top: 12px; width: 100%; padding: 8px; background: #333; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
+.copy-btn:hover { background: #555; }
+.toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 10px 24px; border-radius: 8px; font-size: 14px; display: none; z-index: 999; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>WeWrite 主题画廊</h1>
+  <p>16 个主题 · 点击卡片查看大图 · 点击「复制 HTML」直接粘贴到公众号编辑器</p>
+</div>
+<div class="grid">
+
+        <div class="theme-card" onclick="selectTheme('bauhaus')">
+          <div class="theme-name">bauhaus</div>
+          <div class="theme-desc">包豪斯设计风格：纯白底黑色为主，红蓝黄色块点缀，几何感强烈</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-bauhaus"><h2 style="font-size: 22px; font-weight: 800; color: #004592; margin: 32px 0 14px 0; padding: 8px 0; border-bottom: 4px solid #1a1a1a; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 800; color: #004592; margin: 32px 0 14px 0; padding: 8px 0; border-bottom: 4px solid #1a1a1a; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #004592">
+<tr style="background: #fff">
+<th style="background: #004592; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 2px solid #1a1a1a">指标</th>
+<th style="background: #004592; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 2px solid #1a1a1a">数值</th>
+<th style="background: #004592; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 2px solid #1a1a1a">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">阅读量</td>
+<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">12,580</td>
+<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">分享率</td>
+<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">4.7%</td>
+<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">完读率</td>
+<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">68%</td>
+<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 800; color: #004592; margin: 32px 0 14px 0; padding: 8px 0; border-bottom: 4px solid #1a1a1a; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #1a1a1a; color: #f0f0f0; padding: 16px; border-radius: 0; overflow-x: auto; margin: 16px 0; line-height: 1.6; border-left: 6px solid #e63226; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f0f0f0; color: #004592; padding: 2px 6px; border-radius: 0; border: 1px solid #ddd'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 6px solid #e63226; background: #fff5f5; margin: 16px 0; padding: 12px 16px; border-radius: 0; color: #1a1a1a">
+<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 800; color: #004592; margin: 32px 0 14px 0; padding: 8px 0; border-bottom: 4px solid #1a1a1a; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #e63226; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #e63226; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #e63226; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0"><strong style="font-weight: 800; color: #e63226">加粗文本</strong>和<em style="font-style: italic; color: #555">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('bauhaus')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('bold-green')">
+          <div class="theme-name">bold-green</div>
+          <div class="theme-desc">大胆森林绿风格：白底绿色主色，清新自然，适合环保健康和可持续发展内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-bold-green"><h2 style="font-size: 22px; font-weight: 700; color: #16a34a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #16a34a; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 700; color: #16a34a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #16a34a; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #16a34a">
+<tr style="background: #fff">
+<th style="background: #16a34a; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #16a34a">指标</th>
+<th style="background: #16a34a; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #16a34a">数值</th>
+<th style="background: #16a34a; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #16a34a">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 700; color: #16a34a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #16a34a; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #f0fdf4; color: #1a2e1a; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #bbf7d0; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f0fdf4; color: #15803d; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 4px solid #16a34a; background: #f0fdf4; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #1a2e1a">
+<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 700; color: #16a34a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #16a34a; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a2e1a"><span style="color: #16a34a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a2e1a"><span style="color: #16a34a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a2e1a"><span style="color: #16a34a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0"><strong style="font-weight: 700; color: #16a34a">加粗文本</strong>和<em style="font-style: italic; color: #4a6a4a">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('bold-green')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('bold-navy')">
+          <div class="theme-name">bold-navy</div>
+          <div class="theme-desc">大胆藏青风格：白底藏青主色，稳重专业，适合金融商务和行业分析内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-bold-navy"><h2 style="font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #1e3a5f; border-bottom: 1px solid #e2e8f0; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #1e3a5f; border-bottom: 1px solid #e2e8f0; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #1e3a5f">
+<tr style="background: #fff">
+<th style="background: #1e3a5f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #1e3a5f">指标</th>
+<th style="background: #1e3a5f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #1e3a5f">数值</th>
+<th style="background: #1e3a5f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #1e3a5f">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #1e3a5f; border-bottom: 1px solid #e2e8f0; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #1e3a5f; color: #e2e8f0; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 16px 0; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f0f4f8; color: #1e3a5f; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 4px solid #1e3a5f; background: #f0f4f8; margin: 16px 0; padding: 12px 16px; border-radius: 0 6px 6px 0; color: #2c5282">
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #1e3a5f; border-bottom: 1px solid #e2e8f0; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a2e"><span style="color: #1e3a5f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a2e"><span style="color: #1e3a5f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a2e"><span style="color: #1e3a5f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0"><strong style="font-weight: 700; color: #1e3a5f">加粗文本</strong>和<em style="font-style: italic; color: #4a5568">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('bold-navy')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('bytedance')">
+          <div class="theme-name">bytedance</div>
+          <div class="theme-desc">字节跳动风：白底品牌蓝，现代无衬线，大间距，适合科技产品内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-bytedance"><h2 style="font-size: 22px; font-weight: 700; color: #1f2329; margin: 36px 0 16px 0; padding: 10px 0 10px 14px; border-left: 4px solid #1966FF; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 700; color: #1f2329; margin: 36px 0 16px 0; padding: 10px 0 10px 14px; border-left: 4px solid #1966FF; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px">
+<thead style="background: #1966FF">
+<tr style="background: #fff">
+<th style="background: #1966FF; color: #fff; font-weight: 600; padding: 12px 16px; text-align: left; border: 1px solid #1966FF">指标</th>
+<th style="background: #1966FF; color: #fff; font-weight: 600; padding: 12px 16px; text-align: left; border: 1px solid #1966FF">数值</th>
+<th style="background: #1966FF; color: #fff; font-weight: 600; padding: 12px 16px; text-align: left; border: 1px solid #1966FF">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">阅读量</td>
+<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">12,580</td>
+<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">分享率</td>
+<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">4.7%</td>
+<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">完读率</td>
+<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">68%</td>
+<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 700; color: #1f2329; margin: 36px 0 16px 0; padding: 10px 0 10px 14px; border-left: 4px solid #1966FF; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #f5f6f7; color: #1f2329; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 20px 0; line-height: 1.6; border: 1px solid #e5e6e8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f5f6f7; color: #1966FF; padding: 2px 8px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 4px solid #1966FF; background: #f0f5ff; margin: 20px 0; padding: 16px 20px; border-radius: 0 8px 8px 0; color: #1f2329">
+<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 700; color: #1f2329; margin: 36px 0 16px 0; padding: 10px 0 10px 14px; border-left: 4px solid #1966FF; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2329"><span style="color: #1966FF; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2329"><span style="color: #1966FF; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2329"><span style="color: #1966FF; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0"><strong style="font-weight: 700; color: #1966FF">加粗文本</strong>和<em style="font-style: italic; color: #646a73">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('bytedance')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('elegant-rose')">
+          <div class="theme-name">elegant-rose</div>
+          <div class="theme-desc">优雅玫瑰风格：浅粉底玫瑰色点缀，温柔精致，适合女性生活和时尚内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-elegant-rose"><h2 style="font-size: 22px; font-weight: 700; color: #be185d; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #be185d; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 700; color: #be185d; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #be185d; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #be185d">
+<tr style="background: #fdf2f8">
+<th style="background: #be185d; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #be185d">指标</th>
+<th style="background: #be185d; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #be185d">数值</th>
+<th style="background: #be185d; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #be185d">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fdf2f8">
+<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">+23%</td>
+</tr>
+<tr style="background: #fdf2f8">
+<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">+0.8%</td>
+</tr>
+<tr style="background: #fdf2f8">
+<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 700; color: #be185d; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #be185d; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #fce7f3; color: #3d1f2e; padding: 16px; border-radius: 12px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #fbcfe8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #fce7f3; color: #be185d; padding: 2px 6px; border-radius: 6px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 4px solid #be185d; background: #fce7f3; margin: 16px 0; padding: 12px 16px; border-radius: 0 12px 12px 0; color: #7a5068">
+<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 700; color: #be185d; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #be185d; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #3d1f2e"><span style="color: #be185d; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #3d1f2e"><span style="color: #be185d; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #3d1f2e"><span style="color: #be185d; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0"><strong style="font-weight: 700; color: #be185d">加粗文本</strong>和<em style="font-style: italic; color: #7a5068">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('elegant-rose')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('focus-red')">
+          <div class="theme-name">focus-red</div>
+          <div class="theme-desc">聚焦红风格：白底中国红标题和引用边框，醒目有力，适合新闻评论和观点输出</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-focus-red"><h2 style="font-size: 22px; font-weight: 700; color: #dc2626; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #dc2626; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 700; color: #dc2626; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #dc2626; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #dc2626">
+<tr style="background: #fff">
+<th style="background: #dc2626; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #dc2626">指标</th>
+<th style="background: #dc2626; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #dc2626">数值</th>
+<th style="background: #dc2626; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #dc2626">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 700; color: #dc2626; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #dc2626; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #fef2f2; color: #1a1a1a; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #fecaca; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #fef2f2; color: #b91c1c; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 4px solid #dc2626; background: #fef2f2; margin: 16px 0; padding: 12px 16px; border-radius: 0 6px 6px 0; color: #333">
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 700; color: #dc2626; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #dc2626; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #dc2626; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #dc2626; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #dc2626; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0"><strong style="font-weight: 700; color: #dc2626">加粗文本</strong>和<em style="font-style: italic; color: #555">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('focus-red')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('github')">
+          <div class="theme-name">github</div>
+          <div class="theme-desc">GitHub风格：白底蓝色链接，等宽代码块，简洁清晰，适合技术文档和开发者内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-github"><h2 style="font-size: 22px; font-weight: 600; color: #1f2328; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d1d9e0; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 600; color: #1f2328; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d1d9e0; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #f6f8fa">
+<tr style="background: #fff">
+<th style="background: #f6f8fa; color: #1f2328; font-weight: 600; padding: 8px 14px; text-align: left; border: 1px solid #d1d9e0">指标</th>
+<th style="background: #f6f8fa; color: #1f2328; font-weight: 600; padding: 8px 14px; text-align: left; border: 1px solid #d1d9e0">数值</th>
+<th style="background: #f6f8fa; color: #1f2328; font-weight: 600; padding: 8px 14px; text-align: left; border: 1px solid #d1d9e0">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">阅读量</td>
+<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">12,580</td>
+<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">分享率</td>
+<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">4.7%</td>
+<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">完读率</td>
+<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">68%</td>
+<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 600; color: #1f2328; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d1d9e0; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #f6f8fa; color: #1f2328; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 16px 0; line-height: 1.5; border: 1px solid #d1d9e0; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13.6px; background: rgba(175, 184, 193, 0.2); color: #1f2328; padding: 3px 6px; border-radius: 6px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 4px solid #d0d7de; background: transparent; margin: 16px 0; padding: 4px 16px; border-radius: 0; color: #656d76">
+<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 600; color: #1f2328; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d1d9e0; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2328"><span style="color: #0969da; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2328"><span style="color: #0969da; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2328"><span style="color: #0969da; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0"><strong style="font-weight: 600; color: #1f2328">加粗文本</strong>和<em style="font-style: italic; color: #1f2328">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('github')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('ink')">
+          <div class="theme-name">ink</div>
+          <div class="theme-desc">水墨中国风：宣纸底墨色文字，中文衬线字体，留白疏朗，适合文化和人文内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-ink"><h2 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px 0; text-align: center; padding-bottom: 12px; line-height: 1.4; letter-spacing: 0.05em">第一部分</h2>
+<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px 0; text-align: center; padding-bottom: 12px; line-height: 1.4; letter-spacing: 0.05em">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px">
+<thead style="background: #4a4a4a">
+<tr style="background: #f8f5f0">
+<th style="background: #4a4a4a; color: #f8f5f0; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #4a4a4a">指标</th>
+<th style="background: #4a4a4a; color: #f8f5f0; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #4a4a4a">数值</th>
+<th style="background: #4a4a4a; color: #f8f5f0; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #4a4a4a">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #f8f5f0">
+<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">+23%</td>
+</tr>
+<tr style="background: #f8f5f0">
+<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">+0.8%</td>
+</tr>
+<tr style="background: #f8f5f0">
+<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px 0; text-align: center; padding-bottom: 12px; line-height: 1.4; letter-spacing: 0.05em">代码示例</h2>
+<div class="codehilite"><pre style="background: #f0ebe3; color: #1a1a1a; padding: 16px; border-radius: 2px; overflow-x: auto; margin: 20px 0; line-height: 1.6; border: 1px solid #ddd5c8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f0ebe3; color: #555; padding: 2px 6px; border-radius: 2px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 3px solid #999; background: #f4f0e8; margin: 20px 0; padding: 14px 18px; border-radius: 0 2px 2px 0; color: #555; font-style: italic">
+<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px 0; text-align: center; padding-bottom: 12px; line-height: 1.4; letter-spacing: 0.05em">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #4a4a4a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #4a4a4a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #4a4a4a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em"><strong style="font-weight: 700; color: #1a1a1a">加粗文本</strong>和<em style="font-style: italic; color: #666">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('ink')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('midnight')">
+          <div class="theme-name">midnight</div>
+          <div class="theme-desc">午夜深色主题：深蓝黑底白色文字，蓝色高亮，适合技术和深夜阅读内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-midnight"><h2 style="font-size: 22px; font-weight: 700; color: #60a5fa; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #60a5fa; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 700; color: #60a5fa; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #60a5fa; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #1e3a5f">
+<tr style="background: #0f172a">
+<th style="background: #1e3a5f; color: #f1f5f9; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #334155">指标</th>
+<th style="background: #1e3a5f; color: #f1f5f9; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #334155">数值</th>
+<th style="background: #1e3a5f; color: #f1f5f9; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #334155">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #0f172a">
+<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">+23%</td>
+</tr>
+<tr style="background: #0f172a">
+<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">+0.8%</td>
+</tr>
+<tr style="background: #0f172a">
+<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 700; color: #60a5fa; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #60a5fa; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #334155; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #1e293b; color: #7dd3fc; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 4px solid #60a5fa; background: #172040; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #cbd5e1">
+<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 700; color: #60a5fa; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #60a5fa; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #e2e8f0"><span style="color: #60a5fa; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #e2e8f0"><span style="color: #60a5fa; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #e2e8f0"><span style="color: #60a5fa; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0"><strong style="font-weight: 700; color: #60a5fa">加粗文本</strong>和<em style="font-style: italic; color: #94a3b8">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('midnight')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('minimal')">
+          <div class="theme-name">minimal</div>
+          <div class="theme-desc">极简黑白灰风格，无色彩干扰，内容至上</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-minimal"><h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0; line-height: 1.4">第一部分</h2>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: rgba(0, 0, 0, 0.03)">
+<tr style="background: #fff">
+<th style="background: rgba(0, 0, 0, 0.03); color: #333; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #e0e0e0">指标</th>
+<th style="background: rgba(0, 0, 0, 0.03); color: #333; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #e0e0e0">数值</th>
+<th style="background: rgba(0, 0, 0, 0.03); color: #333; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #e0e0e0">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre data-darkmode-bgcolor="#252525" data-darkmode-color="#c0c0c0" style="background: #f5f5f5; color: #333; padding: 16px; border-radius: 4px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #e0e0e0; white-space: pre-wrap; word-wrap: break-word"><span></span><code data-darkmode-color="#c0c0c0" style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f5f5f5; color: #d73a49; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote data-darkmode-bgcolor="#222222" data-darkmode-color="#c0c0c0" style="border-left: 3px solid #ccc; background: #f9f9f9; margin: 16px 0; padding: 12px 16px; border-radius: 0 4px 4px 0; color: #666">
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0; line-height: 1.4">列表展示</h2>
+<section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="color: #333333; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="color: #333333; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="color: #333333; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0"><strong data-darkmode-color="#e0e0e0" style="font-weight: 700; color: #1a1a1a">加粗文本</strong>和<em style="font-style: italic; color: #333">斜体文本</em>的样式也需要关注。</p>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('minimal')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('minimal-gold')">
+          <div class="theme-name">minimal-gold</div>
+          <div class="theme-desc">极简金色风格：白底金色细线点缀，奢华但克制，适合高端品牌和精品内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-minimal-gold"><h2 style="font-size: 21px; font-weight: 600; color: #2a2a2a; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d4c59a; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 21px; font-weight: 600; color: #2a2a2a; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d4c59a; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #2a2a2a">
+<tr style="background: #fff">
+<th style="background: #2a2a2a; color: #d4a843; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2a2a2a; letter-spacing: 0.03em">指标</th>
+<th style="background: #2a2a2a; color: #d4a843; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2a2a2a; letter-spacing: 0.03em">数值</th>
+<th style="background: #2a2a2a; color: #d4a843; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2a2a2a; letter-spacing: 0.03em">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 21px; font-weight: 600; color: #2a2a2a; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d4c59a; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #faf8f3; color: #2a2a2a; padding: 16px; border-radius: 4px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #e8e0c8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #faf8f3; color: #8b6914; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 2px solid #b8860b; background: #fdfbf5; margin: 16px 0; padding: 12px 16px; border-radius: 0 4px 4px 0; color: #6b6b6b">
+<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 21px; font-weight: 600; color: #2a2a2a; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d4c59a; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2a2a2a"><span style="color: #b8860b; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2a2a2a"><span style="color: #b8860b; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2a2a2a"><span style="color: #b8860b; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0"><strong style="font-weight: 700; color: #b8860b">加粗文本</strong>和<em style="font-style: italic; color: #6b6b6b">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('minimal-gold')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('newspaper')">
+          <div class="theme-name">newspaper</div>
+          <div class="theme-desc">经典报纸风格：米黄底深棕文字，衬线字体质感，适合深度报道和评论</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-newspaper"><h2 style="font-size: 22px; font-weight: 700; color: #2c2416; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #8b4513; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 22px; font-weight: 700; color: #2c2416; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #8b4513; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #8b4513">
+<tr style="background: #f5f0e8">
+<th style="background: #8b4513; color: #f5f0e8; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #8b4513">指标</th>
+<th style="background: #8b4513; color: #f5f0e8; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #8b4513">数值</th>
+<th style="background: #8b4513; color: #f5f0e8; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #8b4513">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #f5f0e8">
+<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">+23%</td>
+</tr>
+<tr style="background: #f5f0e8">
+<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">+0.8%</td>
+</tr>
+<tr style="background: #f5f0e8">
+<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 22px; font-weight: 700; color: #2c2416; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #8b4513; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #ede7db; color: #2c2416; padding: 16px; border-radius: 2px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #d4cbb8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #ede7db; color: #8b4513; padding: 2px 6px; border-radius: 2px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 3px solid #8b4513; background: #f0eade; margin: 16px 0; padding: 12px 16px; border-radius: 0 2px 2px 0; color: #5c4a3a; font-style: italic">
+<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 22px; font-weight: 700; color: #2c2416; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #8b4513; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2c2416"><span style="color: #8b4513; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2c2416"><span style="color: #8b4513; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2c2416"><span style="color: #8b4513; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify"><strong style="font-weight: 700; color: #2c2416">加粗文本</strong>和<em style="font-style: italic; color: #5c4a3a">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('newspaper')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('professional-clean')">
+          <div class="theme-name">professional-clean</div>
+          <div class="theme-desc">干净专业的企业公众号风格，适合大多数商业内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-professional-clean"><h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #2563eb; border-bottom: 1px solid #e5e7eb; line-height: 1.4">第一部分</h2>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #2563eb; border-bottom: 1px solid #e5e7eb; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #2563eb">
+<tr style="background: #fff">
+<th style="background: #2563eb; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2563eb">指标</th>
+<th style="background: #2563eb; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2563eb">数值</th>
+<th style="background: #2563eb; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2563eb">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #2563eb; border-bottom: 1px solid #e5e7eb; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre data-darkmode-bgcolor="#2d2d2d" data-darkmode-color="#d4d4d4" style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word"><span></span><code data-darkmode-color="#d4d4d4" style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f1f5f9; color: #d946ef; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote data-darkmode-bgcolor="#252525" data-darkmode-color="#c8c8c8" style="border-left: 4px solid #2563eb; background: #eff6ff; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #333">
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #2563eb; border-bottom: 1px solid #e5e7eb; line-height: 1.4">列表展示</h2>
+<section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #2563eb; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #2563eb; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #2563eb; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0"><strong data-darkmode-color="#6aadff" style="font-weight: 700; color: #1a1a1a">加粗文本</strong>和<em style="font-style: italic; color: #333">斜体文本</em>的样式也需要关注。</p>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('professional-clean')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('sspai')">
+          <div class="theme-name">sspai</div>
+          <div class="theme-desc">少数派风格：暖白底红色点缀，清爽文艺，适合数码生活和效率工具内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-sspai"><h2 style="font-size: 21px; font-weight: 700; color: #c7372f; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid #c7372f; line-height: 1.4">第一部分</h2>
+<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 style="font-size: 21px; font-weight: 700; color: #c7372f; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid #c7372f; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #c7372f">
+<tr style="background: #fafaf7">
+<th style="background: #c7372f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #c7372f">指标</th>
+<th style="background: #c7372f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #c7372f">数值</th>
+<th style="background: #c7372f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #c7372f">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fafaf7">
+<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">+23%</td>
+</tr>
+<tr style="background: #fafaf7">
+<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">+0.8%</td>
+</tr>
+<tr style="background: #fafaf7">
+<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size: 21px; font-weight: 700; color: #c7372f; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid #c7372f; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre style="background: #f5f2ed; color: #333; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #e8e4dc; white-space: pre-wrap; word-wrap: break-word"><span></span><code style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f5f2ed; color: #c7372f; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote style="border-left: 4px solid #c7372f; background: #fdf5f4; margin: 16px 0; padding: 12px 16px; border-radius: 0 6px 6px 0; color: #555">
+<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 style="font-size: 21px; font-weight: 700; color: #c7372f; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid #c7372f; line-height: 1.4">列表展示</h2>
+<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span style="color: #c7372f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span style="color: #c7372f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span style="color: #c7372f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0"><strong style="font-weight: 700; color: #c7372f">加粗文本</strong>和<em style="font-style: italic; color: #666">斜体文本</em>的样式也需要关注。</p>
+<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('sspai')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('tech-modern')">
+          <div class="theme-name">tech-modern</div>
+          <div class="theme-desc">科技感蓝紫渐变风格，适合技术和产品类内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-tech-modern"><h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 10px; border-bottom: 2px solid transparent; background-image: linear-gradient(90deg, #7c3aed 0%, #3b82f6 50%, transparent 50%); background-size: 100% 2px; background-position: 0 100%; background-repeat: no-repeat; line-height: 1.4">第一部分</h2>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 10px; border-bottom: 2px solid transparent; background-image: linear-gradient(90deg, #7c3aed 0%, #3b82f6 50%, transparent 50%); background-size: 100% 2px; background-position: 0 100%; background-repeat: no-repeat; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); color: #fff">
+<tr style="background: #fff">
+<th style="color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #7c3aed">指标</th>
+<th style="color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #7c3aed">数值</th>
+<th style="color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #7c3aed">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 10px; border-bottom: 2px solid transparent; background-image: linear-gradient(90deg, #7c3aed 0%, #3b82f6 50%, transparent 50%); background-size: 100% 2px; background-position: 0 100%; background-repeat: no-repeat; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre data-darkmode-bgcolor="#1e1e2e" data-darkmode-color="#c8cad8" style="background: #282c34; color: #abb2bf; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word"><span></span><code data-darkmode-color="#c8cad8" style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f5f5f5; color: #e83e8c; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote data-darkmode-bgcolor="#232340" data-darkmode-color="#c8c8c8" style="border-left: 4px solid #7c3aed; background: #f8f5ff; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #333">
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 10px; border-bottom: 2px solid transparent; background-image: linear-gradient(90deg, #7c3aed 0%, #3b82f6 50%, transparent 50%); background-size: 100% 2px; background-position: 0 100%; background-repeat: no-repeat; line-height: 1.4">列表展示</h2>
+<section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #7c3aed; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #7c3aed; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #7c3aed; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0"><strong data-darkmode-color="#a78bfa" style="font-weight: 700; color: #7c3aed">加粗文本</strong>和<em style="font-style: italic; color: #333">斜体文本</em>的样式也需要关注。</p>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('tech-modern')">复制 HTML</button>
+        </div>
+        <div class="theme-card" onclick="selectTheme('warm-editorial')">
+          <div class="theme-name">warm-editorial</div>
+          <div class="theme-desc">暖色编辑风格，适合生活方式和文化类内容</div>
+          <div class="phone-frame">
+            <div class="phone-content" id="preview-warm-editorial"><h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #d97706; line-height: 1.4">第一部分</h2>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #d97706; line-height: 1.4">关键数据</h2>
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">
+<thead style="background: #d97706">
+<tr style="background: #fff">
+<th style="background: #d97706; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #d97706">指标</th>
+<th style="background: #d97706; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #d97706">数值</th>
+<th style="background: #d97706; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #d97706">变化</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">阅读量</td>
+<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">12,580</td>
+<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">+23%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">分享率</td>
+<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">4.7%</td>
+<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">+0.8%</td>
+</tr>
+<tr style="background: #fff">
+<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">完读率</td>
+<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">68%</td>
+<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">-2%</td>
+</tr>
+</tbody>
+</table>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #d97706; line-height: 1.4">代码示例</h2>
+<div class="codehilite"><pre data-darkmode-bgcolor="#2a2520" data-darkmode-color="#d4b896" style="background: #fef3c7; color: #92400e; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #fde68a; white-space: pre-wrap; word-wrap: break-word"><span></span><code data-darkmode-color="#d4b896" style='font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 4px'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote data-darkmode-bgcolor="#2a2418" data-darkmode-color="#d4c8b8" style="border-left: 4px solid #d97706; background: #fffbeb; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #333">
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>
+</blockquote>
+<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #d97706; line-height: 1.4">列表展示</h2>
+<section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="color: #d97706; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="color: #d97706; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="color: #d97706; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0"><strong data-darkmode-color="#f0a830" style="font-weight: 700; color: #92400e">加粗文本</strong>和<em style="font-style: italic; color: #333">斜体文本</em>的样式也需要关注。</p>
+<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p></div>
+          </div>
+          <button class="copy-btn" onclick="event.stopPropagation(); copyHTML('warm-editorial')">复制 HTML</button>
+        </div>
+</div>
+<div class="toast" id="toast">已复制到剪贴板</div>
+<script>
+const themeData = {
+  'bauhaus': '<h2 style="font-size: 22px; font-weight: 800; color: #004592; margin: 32px 0 14px 0; padding: 8px 0; border-bottom: 4px solid #1a1a1a; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 800; color: #004592; margin: 32px 0 14px 0; padding: 8px 0; border-bottom: 4px solid #1a1a1a; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #004592">\n<tr style="background: #fff">\n<th style="background: #004592; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 2px solid #1a1a1a">指标</th>\n<th style="background: #004592; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 2px solid #1a1a1a">数值</th>\n<th style="background: #004592; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 2px solid #1a1a1a">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">阅读量</td>\n<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">12,580</td>\n<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">分享率</td>\n<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">4.7%</td>\n<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">完读率</td>\n<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">68%</td>\n<td style="padding: 10px 14px; border: 2px solid #1a1a1a; color: #1a1a1a">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 800; color: #004592; margin: 32px 0 14px 0; padding: 8px 0; border-bottom: 4px solid #1a1a1a; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #1a1a1a; color: #f0f0f0; padding: 16px; border-radius: 0; overflow-x: auto; margin: 16px 0; line-height: 1.6; border-left: 6px solid #e63226; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f0f0f0; color: #004592; padding: 2px 6px; border-radius: 0; border: 1px solid #ddd\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 6px solid #e63226; background: #fff5f5; margin: 16px 0; padding: 12px 16px; border-radius: 0; color: #1a1a1a">\n<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 800; color: #004592; margin: 32px 0 14px 0; padding: 8px 0; border-bottom: 4px solid #1a1a1a; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #e63226; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #e63226; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #e63226; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0"><strong style="font-weight: 800; color: #e63226">加粗文本</strong>和<em style="font-style: italic; color: #555">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.75; color: #1a1a1a; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'bold-green': '<h2 style="font-size: 22px; font-weight: 700; color: #16a34a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #16a34a; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 700; color: #16a34a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #16a34a; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #16a34a">\n<tr style="background: #fff">\n<th style="background: #16a34a; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #16a34a">指标</th>\n<th style="background: #16a34a; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #16a34a">数值</th>\n<th style="background: #16a34a; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #16a34a">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #d1fae5; color: #1a2e1a">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 700; color: #16a34a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #16a34a; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #f0fdf4; color: #1a2e1a; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #bbf7d0; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f0fdf4; color: #15803d; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 4px solid #16a34a; background: #f0fdf4; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #1a2e1a">\n<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 700; color: #16a34a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #16a34a; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a2e1a"><span style="color: #16a34a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a2e1a"><span style="color: #16a34a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a2e1a"><span style="color: #16a34a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0"><strong style="font-weight: 700; color: #16a34a">加粗文本</strong>和<em style="font-style: italic; color: #4a6a4a">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #1a2e1a; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'bold-navy': '<h2 style="font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #1e3a5f; border-bottom: 1px solid #e2e8f0; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #1e3a5f; border-bottom: 1px solid #e2e8f0; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #1e3a5f">\n<tr style="background: #fff">\n<th style="background: #1e3a5f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #1e3a5f">指标</th>\n<th style="background: #1e3a5f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #1e3a5f">数值</th>\n<th style="background: #1e3a5f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #1e3a5f">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #e2e8f0; color: #1a1a2e">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #1e3a5f; border-bottom: 1px solid #e2e8f0; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #1e3a5f; color: #e2e8f0; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 16px 0; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f0f4f8; color: #1e3a5f; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 4px solid #1e3a5f; background: #f0f4f8; margin: 16px 0; padding: 12px 16px; border-radius: 0 6px 6px 0; color: #2c5282">\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #1e3a5f; border-bottom: 1px solid #e2e8f0; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a2e"><span style="color: #1e3a5f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a2e"><span style="color: #1e3a5f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a2e"><span style="color: #1e3a5f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0"><strong style="font-weight: 700; color: #1e3a5f">加粗文本</strong>和<em style="font-style: italic; color: #4a5568">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a2e; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'bytedance': '<h2 style="font-size: 22px; font-weight: 700; color: #1f2329; margin: 36px 0 16px 0; padding: 10px 0 10px 14px; border-left: 4px solid #1966FF; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 700; color: #1f2329; margin: 36px 0 16px 0; padding: 10px 0 10px 14px; border-left: 4px solid #1966FF; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px">\n<thead style="background: #1966FF">\n<tr style="background: #fff">\n<th style="background: #1966FF; color: #fff; font-weight: 600; padding: 12px 16px; text-align: left; border: 1px solid #1966FF">指标</th>\n<th style="background: #1966FF; color: #fff; font-weight: 600; padding: 12px 16px; text-align: left; border: 1px solid #1966FF">数值</th>\n<th style="background: #1966FF; color: #fff; font-weight: 600; padding: 12px 16px; text-align: left; border: 1px solid #1966FF">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">阅读量</td>\n<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">12,580</td>\n<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">分享率</td>\n<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">4.7%</td>\n<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">完读率</td>\n<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">68%</td>\n<td style="padding: 12px 16px; border: 1px solid #e5e6e8; color: #1f2329">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 700; color: #1f2329; margin: 36px 0 16px 0; padding: 10px 0 10px 14px; border-left: 4px solid #1966FF; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #f5f6f7; color: #1f2329; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 20px 0; line-height: 1.6; border: 1px solid #e5e6e8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f5f6f7; color: #1966FF; padding: 2px 8px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 4px solid #1966FF; background: #f0f5ff; margin: 20px 0; padding: 16px 20px; border-radius: 0 8px 8px 0; color: #1f2329">\n<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 700; color: #1f2329; margin: 36px 0 16px 0; padding: 10px 0 10px 14px; border-left: 4px solid #1966FF; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2329"><span style="color: #1966FF; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2329"><span style="color: #1966FF; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2329"><span style="color: #1966FF; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0"><strong style="font-weight: 700; color: #1966FF">加粗文本</strong>和<em style="font-style: italic; color: #646a73">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 2; color: #1f2329; margin: 16px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'elegant-rose': '<h2 style="font-size: 22px; font-weight: 700; color: #be185d; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #be185d; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 700; color: #be185d; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #be185d; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #be185d">\n<tr style="background: #fdf2f8">\n<th style="background: #be185d; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #be185d">指标</th>\n<th style="background: #be185d; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #be185d">数值</th>\n<th style="background: #be185d; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #be185d">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fdf2f8">\n<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">+23%</td>\n</tr>\n<tr style="background: #fdf2f8">\n<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">+0.8%</td>\n</tr>\n<tr style="background: #fdf2f8">\n<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #fbcfe8; color: #3d1f2e">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 700; color: #be185d; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #be185d; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #fce7f3; color: #3d1f2e; padding: 16px; border-radius: 12px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #fbcfe8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #fce7f3; color: #be185d; padding: 2px 6px; border-radius: 6px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 4px solid #be185d; background: #fce7f3; margin: 16px 0; padding: 12px 16px; border-radius: 0 12px 12px 0; color: #7a5068">\n<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 700; color: #be185d; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #be185d; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #3d1f2e"><span style="color: #be185d; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #3d1f2e"><span style="color: #be185d; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #3d1f2e"><span style="color: #be185d; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0"><strong style="font-weight: 700; color: #be185d">加粗文本</strong>和<em style="font-style: italic; color: #7a5068">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.85; color: #3d1f2e; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'focus-red': '<h2 style="font-size: 22px; font-weight: 700; color: #dc2626; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #dc2626; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 700; color: #dc2626; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #dc2626; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #dc2626">\n<tr style="background: #fff">\n<th style="background: #dc2626; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #dc2626">指标</th>\n<th style="background: #dc2626; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #dc2626">数值</th>\n<th style="background: #dc2626; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #dc2626">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1a1a1a">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 700; color: #dc2626; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #dc2626; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #fef2f2; color: #1a1a1a; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #fecaca; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #fef2f2; color: #b91c1c; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 4px solid #dc2626; background: #fef2f2; margin: 16px 0; padding: 12px 16px; border-radius: 0 6px 6px 0; color: #333">\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 700; color: #dc2626; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #dc2626; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #dc2626; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #dc2626; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #dc2626; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0"><strong style="font-weight: 700; color: #dc2626">加粗文本</strong>和<em style="font-style: italic; color: #555">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #1a1a1a; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'github': '<h2 style="font-size: 22px; font-weight: 600; color: #1f2328; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d1d9e0; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 600; color: #1f2328; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d1d9e0; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #f6f8fa">\n<tr style="background: #fff">\n<th style="background: #f6f8fa; color: #1f2328; font-weight: 600; padding: 8px 14px; text-align: left; border: 1px solid #d1d9e0">指标</th>\n<th style="background: #f6f8fa; color: #1f2328; font-weight: 600; padding: 8px 14px; text-align: left; border: 1px solid #d1d9e0">数值</th>\n<th style="background: #f6f8fa; color: #1f2328; font-weight: 600; padding: 8px 14px; text-align: left; border: 1px solid #d1d9e0">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">阅读量</td>\n<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">12,580</td>\n<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">分享率</td>\n<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">4.7%</td>\n<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">完读率</td>\n<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">68%</td>\n<td style="padding: 8px 14px; border: 1px solid #d1d9e0; color: #1f2328">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 600; color: #1f2328; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d1d9e0; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #f6f8fa; color: #1f2328; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 16px 0; line-height: 1.5; border: 1px solid #d1d9e0; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13.6px; background: rgba(175, 184, 193, 0.2); color: #1f2328; padding: 3px 6px; border-radius: 6px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 4px solid #d0d7de; background: transparent; margin: 16px 0; padding: 4px 16px; border-radius: 0; color: #656d76">\n<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 600; color: #1f2328; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d1d9e0; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2328"><span style="color: #0969da; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2328"><span style="color: #0969da; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1f2328"><span style="color: #0969da; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0"><strong style="font-weight: 600; color: #1f2328">加粗文本</strong>和<em style="font-style: italic; color: #1f2328">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.75; color: #1f2328; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'ink': '<h2 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px 0; text-align: center; padding-bottom: 12px; line-height: 1.4; letter-spacing: 0.05em">第一部分</h2>\n<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px 0; text-align: center; padding-bottom: 12px; line-height: 1.4; letter-spacing: 0.05em">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px">\n<thead style="background: #4a4a4a">\n<tr style="background: #f8f5f0">\n<th style="background: #4a4a4a; color: #f8f5f0; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #4a4a4a">指标</th>\n<th style="background: #4a4a4a; color: #f8f5f0; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #4a4a4a">数值</th>\n<th style="background: #4a4a4a; color: #f8f5f0; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #4a4a4a">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #f8f5f0">\n<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">+23%</td>\n</tr>\n<tr style="background: #f8f5f0">\n<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">+0.8%</td>\n</tr>\n<tr style="background: #f8f5f0">\n<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #ddd5c8; color: #1a1a1a">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px 0; text-align: center; padding-bottom: 12px; line-height: 1.4; letter-spacing: 0.05em">代码示例</h2>\n<div class="codehilite"><pre style="background: #f0ebe3; color: #1a1a1a; padding: 16px; border-radius: 2px; overflow-x: auto; margin: 20px 0; line-height: 1.6; border: 1px solid #ddd5c8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f0ebe3; color: #555; padding: 2px 6px; border-radius: 2px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 3px solid #999; background: #f4f0e8; margin: 20px 0; padding: 14px 18px; border-radius: 0 2px 2px 0; color: #555; font-style: italic">\n<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px 0; text-align: center; padding-bottom: 12px; line-height: 1.4; letter-spacing: 0.05em">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #4a4a4a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #4a4a4a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #1a1a1a"><span style="color: #4a4a4a; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em"><strong style="font-weight: 700; color: #1a1a1a">加粗文本</strong>和<em style="font-style: italic; color: #666">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 2; color: #1a1a1a; margin: 16px 0; text-indent: 2em">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'midnight': '<h2 style="font-size: 22px; font-weight: 700; color: #60a5fa; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #60a5fa; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 700; color: #60a5fa; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #60a5fa; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #1e3a5f">\n<tr style="background: #0f172a">\n<th style="background: #1e3a5f; color: #f1f5f9; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #334155">指标</th>\n<th style="background: #1e3a5f; color: #f1f5f9; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #334155">数值</th>\n<th style="background: #1e3a5f; color: #f1f5f9; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #334155">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #0f172a">\n<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">+23%</td>\n</tr>\n<tr style="background: #0f172a">\n<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">+0.8%</td>\n</tr>\n<tr style="background: #0f172a">\n<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #334155; color: #e2e8f0">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 700; color: #60a5fa; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #60a5fa; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #334155; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #1e293b; color: #7dd3fc; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 4px solid #60a5fa; background: #172040; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #cbd5e1">\n<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 700; color: #60a5fa; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #60a5fa; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #e2e8f0"><span style="color: #60a5fa; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #e2e8f0"><span style="color: #60a5fa; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #e2e8f0"><span style="color: #60a5fa; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0"><strong style="font-weight: 700; color: #60a5fa">加粗文本</strong>和<em style="font-style: italic; color: #94a3b8">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #e2e8f0; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'minimal': '<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0; line-height: 1.4">第一部分</h2>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: rgba(0, 0, 0, 0.03)">\n<tr style="background: #fff">\n<th style="background: rgba(0, 0, 0, 0.03); color: #333; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #e0e0e0">指标</th>\n<th style="background: rgba(0, 0, 0, 0.03); color: #333; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #e0e0e0">数值</th>\n<th style="background: rgba(0, 0, 0, 0.03); color: #333; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #e0e0e0">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #e0e0e0; color: #333">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre data-darkmode-bgcolor="#252525" data-darkmode-color="#c0c0c0" style="background: #f5f5f5; color: #333; padding: 16px; border-radius: 4px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #e0e0e0; white-space: pre-wrap; word-wrap: break-word"><span></span><code data-darkmode-color="#c0c0c0" style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f5f5f5; color: #d73a49; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote data-darkmode-bgcolor="#222222" data-darkmode-color="#c0c0c0" style="border-left: 3px solid #ccc; background: #f9f9f9; margin: 16px 0; padding: 12px 16px; border-radius: 0 4px 4px 0; color: #666">\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0; line-height: 1.4">列表展示</h2>\n<section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="color: #333333; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="color: #333333; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="color: #333333; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0"><strong data-darkmode-color="#e0e0e0" style="font-weight: 700; color: #1a1a1a">加粗文本</strong>和<em style="font-style: italic; color: #333">斜体文本</em>的样式也需要关注。</p>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c0c0c0" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'minimal-gold': '<h2 style="font-size: 21px; font-weight: 600; color: #2a2a2a; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d4c59a; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 21px; font-weight: 600; color: #2a2a2a; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d4c59a; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #2a2a2a">\n<tr style="background: #fff">\n<th style="background: #2a2a2a; color: #d4a843; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2a2a2a; letter-spacing: 0.03em">指标</th>\n<th style="background: #2a2a2a; color: #d4a843; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2a2a2a; letter-spacing: 0.03em">数值</th>\n<th style="background: #2a2a2a; color: #d4a843; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2a2a2a; letter-spacing: 0.03em">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e0c8; color: #2a2a2a">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 21px; font-weight: 600; color: #2a2a2a; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d4c59a; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #faf8f3; color: #2a2a2a; padding: 16px; border-radius: 4px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #e8e0c8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #faf8f3; color: #8b6914; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 2px solid #b8860b; background: #fdfbf5; margin: 16px 0; padding: 12px 16px; border-radius: 0 4px 4px 0; color: #6b6b6b">\n<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 21px; font-weight: 600; color: #2a2a2a; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #d4c59a; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2a2a2a"><span style="color: #b8860b; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2a2a2a"><span style="color: #b8860b; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2a2a2a"><span style="color: #b8860b; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0"><strong style="font-weight: 700; color: #b8860b">加粗文本</strong>和<em style="font-style: italic; color: #6b6b6b">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'newspaper': '<h2 style="font-size: 22px; font-weight: 700; color: #2c2416; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #8b4513; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 22px; font-weight: 700; color: #2c2416; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #8b4513; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #8b4513">\n<tr style="background: #f5f0e8">\n<th style="background: #8b4513; color: #f5f0e8; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #8b4513">指标</th>\n<th style="background: #8b4513; color: #f5f0e8; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #8b4513">数值</th>\n<th style="background: #8b4513; color: #f5f0e8; font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #8b4513">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #f5f0e8">\n<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">+23%</td>\n</tr>\n<tr style="background: #f5f0e8">\n<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">+0.8%</td>\n</tr>\n<tr style="background: #f5f0e8">\n<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #d4cbb8; color: #2c2416">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 22px; font-weight: 700; color: #2c2416; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #8b4513; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #ede7db; color: #2c2416; padding: 16px; border-radius: 2px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #d4cbb8; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #ede7db; color: #8b4513; padding: 2px 6px; border-radius: 2px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 3px solid #8b4513; background: #f0eade; margin: 16px 0; padding: 12px 16px; border-radius: 0 2px 2px 0; color: #5c4a3a; font-style: italic">\n<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 22px; font-weight: 700; color: #2c2416; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #8b4513; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2c2416"><span style="color: #8b4513; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2c2416"><span style="color: #8b4513; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #2c2416"><span style="color: #8b4513; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify"><strong style="font-weight: 700; color: #2c2416">加粗文本</strong>和<em style="font-style: italic; color: #5c4a3a">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.9; color: #2c2416; margin: 14px 0; text-align: justify">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'professional-clean': '<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #2563eb; border-bottom: 1px solid #e5e7eb; line-height: 1.4">第一部分</h2>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #2563eb; border-bottom: 1px solid #e5e7eb; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #2563eb">\n<tr style="background: #fff">\n<th style="background: #2563eb; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2563eb">指标</th>\n<th style="background: #2563eb; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2563eb">数值</th>\n<th style="background: #2563eb; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #2563eb">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #2563eb; border-bottom: 1px solid #e5e7eb; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre data-darkmode-bgcolor="#2d2d2d" data-darkmode-color="#d4d4d4" style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word"><span></span><code data-darkmode-color="#d4d4d4" style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f1f5f9; color: #d946ef; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote data-darkmode-bgcolor="#252525" data-darkmode-color="#c8c8c8" style="border-left: 4px solid #2563eb; background: #eff6ff; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #333">\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #2563eb; border-bottom: 1px solid #e5e7eb; line-height: 1.4">列表展示</h2>\n<section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #2563eb; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #2563eb; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #2563eb; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0"><strong data-darkmode-color="#6aadff" style="font-weight: 700; color: #1a1a1a">加粗文本</strong>和<em style="font-style: italic; color: #333">斜体文本</em>的样式也需要关注。</p>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'sspai': '<h2 style="font-size: 21px; font-weight: 700; color: #c7372f; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid #c7372f; line-height: 1.4">第一部分</h2>\n<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 style="font-size: 21px; font-weight: 700; color: #c7372f; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid #c7372f; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #c7372f">\n<tr style="background: #fafaf7">\n<th style="background: #c7372f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #c7372f">指标</th>\n<th style="background: #c7372f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #c7372f">数值</th>\n<th style="background: #c7372f; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #c7372f">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fafaf7">\n<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">+23%</td>\n</tr>\n<tr style="background: #fafaf7">\n<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">+0.8%</td>\n</tr>\n<tr style="background: #fafaf7">\n<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #e8e4dc; color: #333">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 style="font-size: 21px; font-weight: 700; color: #c7372f; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid #c7372f; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre style="background: #f5f2ed; color: #333; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #e8e4dc; white-space: pre-wrap; word-wrap: break-word"><span></span><code style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f5f2ed; color: #c7372f; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote style="border-left: 4px solid #c7372f; background: #fdf5f4; margin: 16px 0; padding: 12px 16px; border-radius: 0 6px 6px 0; color: #555">\n<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 style="font-size: 21px; font-weight: 700; color: #c7372f; margin: 30px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid #c7372f; line-height: 1.4">列表展示</h2>\n<section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span style="color: #c7372f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span style="color: #c7372f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span style="color: #c7372f; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0"><strong style="font-weight: 700; color: #c7372f">加粗文本</strong>和<em style="font-style: italic; color: #666">斜体文本</em>的样式也需要关注。</p>\n<p style="font-size: 16px; line-height: 1.85; color: #333; margin: 14px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'tech-modern': '<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 10px; border-bottom: 2px solid transparent; background-image: linear-gradient(90deg, #7c3aed 0%, #3b82f6 50%, transparent 50%); background-size: 100% 2px; background-position: 0 100%; background-repeat: no-repeat; line-height: 1.4">第一部分</h2>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 10px; border-bottom: 2px solid transparent; background-image: linear-gradient(90deg, #7c3aed 0%, #3b82f6 50%, transparent 50%); background-size: 100% 2px; background-position: 0 100%; background-repeat: no-repeat; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); color: #fff">\n<tr style="background: #fff">\n<th style="color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #7c3aed">指标</th>\n<th style="color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #7c3aed">数值</th>\n<th style="color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #7c3aed">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #333">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 10px; border-bottom: 2px solid transparent; background-image: linear-gradient(90deg, #7c3aed 0%, #3b82f6 50%, transparent 50%); background-size: 100% 2px; background-position: 0 100%; background-repeat: no-repeat; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre data-darkmode-bgcolor="#1e1e2e" data-darkmode-color="#c8cad8" style="background: #282c34; color: #abb2bf; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word"><span></span><code data-darkmode-color="#c8cad8" style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #f5f5f5; color: #e83e8c; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote data-darkmode-bgcolor="#232340" data-darkmode-color="#c8c8c8" style="border-left: 4px solid #7c3aed; background: #f8f5ff; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #333">\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding-bottom: 10px; border-bottom: 2px solid transparent; background-image: linear-gradient(90deg, #7c3aed 0%, #3b82f6 50%, transparent 50%); background-size: 100% 2px; background-position: 0 100%; background-repeat: no-repeat; line-height: 1.4">列表展示</h2>\n<section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #7c3aed; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #7c3aed; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="color: #7c3aed; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0"><strong data-darkmode-color="#a78bfa" style="font-weight: 700; color: #7c3aed">加粗文本</strong>和<em style="font-style: italic; color: #333">斜体文本</em>的样式也需要关注。</p>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#c8c8c8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>',
+  'warm-editorial': '<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #d97706; line-height: 1.4">第一部分</h2>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">这是一段正常的文章内容，用来展示不同主题的排版效果。 WeWrite 支持多种排版主题，每种都有独特的视觉风格。</p>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">说实话，选主题这件事——看截图永远不如看实际渲染效果。</p>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #d97706; line-height: 1.4">关键数据</h2>\n<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px">\n<thead style="background: #d97706">\n<tr style="background: #fff">\n<th style="background: #d97706; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #d97706">指标</th>\n<th style="background: #d97706; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #d97706">数值</th>\n<th style="background: #d97706; color: #fff; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid #d97706">变化</th>\n</tr>\n</thead>\n<tbody>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">阅读量</td>\n<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">12,580</td>\n<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">+23%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">分享率</td>\n<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">4.7%</td>\n<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">+0.8%</td>\n</tr>\n<tr style="background: #fff">\n<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">完读率</td>\n<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">68%</td>\n<td style="padding: 10px 14px; border: 1px solid #fde68a; color: #333">-2%</td>\n</tr>\n</tbody>\n</table>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #d97706; line-height: 1.4">代码示例</h2>\n<div class="codehilite"><pre data-darkmode-bgcolor="#2a2520" data-darkmode-color="#d4b896" style="background: #fef3c7; color: #92400e; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; line-height: 1.6; border: 1px solid #fde68a; white-space: pre-wrap; word-wrap: break-word"><span></span><code data-darkmode-color="#d4b896" style=\'font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 14px; background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 4px\'><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>\n    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, WeWrite!"</span><span class="p">)</span>\n</code></pre></div>\n<blockquote data-darkmode-bgcolor="#2a2418" data-darkmode-color="#d4c8b8" style="border-left: 4px solid #d97706; background: #fffbeb; margin: 16px 0; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #333">\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">好的排版不是让读者注意到设计，而是让读者忘记设计，只记住内容。</p>\n</blockquote>\n<h2 data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 28px 0 14px 0; padding: 8px 0 8px 12px; border-left: 4px solid #d97706; line-height: 1.4">列表展示</h2>\n<section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="color: #d97706; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第一个要点：简洁是设计的灵魂</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="color: #d97706; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第二个要点：一致性比创意更重要</span></section><section data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="display: flex; align-items: flex-start; margin-bottom: 8px; color: #333333"><span data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="color: #d97706; margin-right: 8px; flex-shrink: 0; font-size: 18px; line-height: 1.6">•</span><span style="flex: 1">第三个要点：移动端体验优先</span></section></section>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0"><strong data-darkmode-color="#f0a830" style="font-weight: 700; color: #92400e">加粗文本</strong>和<em style="font-style: italic; color: #333">斜体文本</em>的样式也需要关注。</p>\n<p data-darkmode-bgcolor="transparent" data-darkmode-color="#d4c8b8" style="font-size: 16px; line-height: 1.8; color: #333; margin: 12px 0">最后这段用来展示文章结尾的留白和间距效果。一篇好文章的结尾，应该像一首好歌的最后一个音符——恰到好处地收束。</p>'
+};
+function copyHTML(name) {
+  const html = themeData[name];
+  if (html) {
+    navigator.clipboard.writeText(html).then(() => {
+      const t = document.getElementById('toast');
+      t.style.display = 'block';
+      setTimeout(() => t.style.display = 'none', 1500);
+    });
+  }
+}
+function selectTheme(name) {
+  localStorage.setItem('wewrite-theme', name);
+  // Scroll to card for visual feedback
+  const el = document.getElementById('preview-' + name);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+</script>
+</body>
+</html>
