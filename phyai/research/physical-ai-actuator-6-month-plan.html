@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>物理 AI 精密执行器与关节模组 6 个月研究计划</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --paper: #ffffff;
+      --ink: #1d2433;
+      --muted: #667085;
+      --line: #d9dee7;
+      --soft-line: #ebeff5;
+      --accent: #116d6e;
+      --accent-soft: #e4f4f3;
+      --code-bg: #f2f4f7;
+      --shadow: 0 18px 50px rgba(16, 24, 40, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+    .page {
+      display: grid;
+      grid-template-columns: minmax(220px, 280px) minmax(0, 920px);
+      gap: 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 36px 24px 56px;
+    }
+    .toc-panel {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      max-height: calc(100vh - 48px);
+      overflow: auto;
+      padding: 18px 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+    .toc-panel h2 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .toc-panel ul { list-style: none; padding-left: 0; margin: 0; }
+    .toc-panel li { margin: 6px 0; }
+    .toc-panel ul ul { padding-left: 14px; margin-top: 4px; }
+    .toc-panel a {
+      color: #344054;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .toc-panel a:hover { color: var(--accent); }
+    article {
+      min-width: 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 48px 56px 64px;
+    }
+    .meta {
+      margin: -12px 0 30px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    h1, h2, h3 { line-height: 1.28; letter-spacing: 0; }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 34px;
+      color: #101828;
+    }
+    h2 {
+      margin: 44px 0 16px;
+      padding-top: 8px;
+      border-top: 1px solid var(--soft-line);
+      font-size: 25px;
+    }
+    h3 { margin: 30px 0 12px; font-size: 20px; }
+    p { margin: 12px 0; }
+    blockquote {
+      margin: 20px 0;
+      padding: 16px 20px;
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+      color: #244344;
+    }
+    ul, ol { padding-left: 1.4em; }
+    li { margin: 5px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 26px;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+    }
+    th {
+      background: #f3f6fa;
+      text-align: left;
+      font-weight: 700;
+    }
+    tr:nth-child(even) td { background: #fbfcfe; }
+    code {
+      background: var(--code-bg);
+      border-radius: 5px;
+      padding: 0.12em 0.35em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+    pre {
+      overflow: auto;
+      margin: 18px 0 26px;
+      padding: 18px 20px;
+      border-radius: 8px;
+      background: #101828;
+      color: #f8fafc;
+    }
+    pre code { background: transparent; color: inherit; padding: 0; }
+    a { color: var(--accent); }
+    @media (max-width: 980px) {
+      .page { display: block; padding: 16px; }
+      .toc-panel { position: static; max-height: none; margin-bottom: 16px; }
+      article { padding: 30px 22px 42px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 22px; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+    @media print {
+      body { background: #fff; }
+      .page { display: block; max-width: none; padding: 0; }
+      .toc-panel { display: none; }
+      article { box-shadow: none; border: 0; padding: 0; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <aside class="toc-panel" aria-label="目录">
+      <h2>目录</h2>
+      <div class="toc">
+<ul>
+<li><a href="#ai-6">物理 AI 精密执行器与关节模组 6 个月研究计划</a><ul>
+<li><a href="#1">1. 六个月总目标</a></li>
+<li><a href="#2">2. 每周固定投入结构</a></li>
+<li><a href="#3">3. 研究边界</a></li>
+<li><a href="#4">4. 证据等级系统</a></li>
+<li><a href="#5">5. 资料可信度分层</a></li>
+<li><a href="#6">6. 六个月路线图</a><ul>
+<li><a href="#1_1">第 1 个月：技术骨架月</a></li>
+<li><a href="#2_1">第 2 个月：资产地图月</a></li>
+<li><a href="#3_1">第 3 个月：重点池筛选月</a></li>
+<li><a href="#4_1">第 4 个月：季度信号演练月</a></li>
+<li><a href="#5_1">第 5 个月：两家公司深潜月</a></li>
+<li><a href="#6_1">第 6 个月：系统成型月</a></li>
+</ul>
+</li>
+<li><a href="#7">7. 模拟组合规则</a></li>
+<li><a href="#8">8. 每周研究日志模板</a></li>
+<li><a href="#9">9. 合格标准</a></li>
+<li><a href="#10">10. 投资纪律</a></li>
+<li><a href="#11">11. 推荐起步资料</a><ul>
+<li><a href="#bilibili">Bilibili</a></li>
+<li><a href="#youtube">YouTube / 英文资料</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </aside>
+    <article>
+      <div class="meta">由 docs/research/physical-ai-actuator-6-month-plan.md 生成 · 2026-06-01 19:43</div>
+      <h1 id="ai-6">物理 AI 精密执行器与关节模组 6 个月研究计划</h1>
+<blockquote>
+<p>版本：v1.0<br />
+起点：每周投入 5 小时以上<br />
+目标：用 6 个月建立一套可持续迭代的产业研究系统，先形成判断力，再考虑真实投资动作。<br />
+范围：人形机器人与具身智能硬件中的执行层，重点覆盖关节模组、精密传动、力感知、电机与模组总成。</p>
+</blockquote>
+<h2 id="1">1. 六个月总目标</h2>
+<p>6 个月后，至少完成以下 6 个成果：</p>
+<ol>
+<li>《技术工艺卡点手册 v1.0》</li>
+<li>《物理 AI 关节赛道资产地图 v1.0》</li>
+<li>A/B/C 三档重点公司池，合计 15-25 家</li>
+<li>6-8 只模拟组合，至少完成 3 次月度复盘</li>
+<li>2 篇单公司深度跟踪报告</li>
+<li>《半年度投资研究备忘录 v1.0》</li>
+</ol>
+<p>这 6 个月的首要目标不是买入某只股票，而是形成三种能力：</p>
+<ul>
+<li>看懂技术路线：知道旋转关节、线性执行器、谐波减速器、行星滚柱丝杠、六维力传感器、无框力矩电机分别解决什么问题。</li>
+<li>识别证据等级：能区分概念表述、技术储备、送样、小批量订单、财报收入和利润兑现。</li>
+<li>建立跟踪纪律：用固定表格、固定节奏、固定问题持续更新认知。</li>
+</ul>
+<h2 id="2">2. 每周固定投入结构</h2>
+<p>每周基础投入按 5 小时设计，时间多时优先加到公司研究和输出整理。</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th style="text-align: right;">时间</th>
+<th>任务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>技术学习</td>
+<td style="text-align: right;">1.5 小时</td>
+<td>视频、公开课、技术文章、公司技术演讲</td>
+</tr>
+<tr>
+<td>公司研究</td>
+<td style="text-align: right;">1.5 小时</td>
+<td>年报、公告、互动易、调研纪要、业务纯度</td>
+</tr>
+<tr>
+<td>产业动态</td>
+<td style="text-align: right;">1 小时</td>
+<td>整机厂进展、展会、一级市场、供应链新闻</td>
+</tr>
+<tr>
+<td>输出整理</td>
+<td style="text-align: right;">1 小时</td>
+<td>更新表格、写周记、打证据等级</td>
+</tr>
+</tbody>
+</table>
+<p>每周必须留下一个可复用产出，优先级如下：</p>
+<ol>
+<li>一页技术卡片</li>
+<li>一家公司证据表</li>
+<li>一条产业事件备忘录</li>
+<li>一次模拟组合复盘</li>
+</ol>
+<h2 id="3">3. 研究边界</h2>
+<p>本阶段重点研究：</p>
+<ul>
+<li>旋转关节：谐波减速器、行星减速器、摆线减速器、无框力矩电机、编码器、轴承、力矩传感器。</li>
+<li>线性执行器：行星滚柱丝杠、滚珠丝杠、梯形丝杠、反向行星滚柱丝杠、线性关节模组。</li>
+<li>力感知：六维力传感器、关节扭矩传感器、拉压力传感器、触觉传感器。</li>
+<li>模组总成：旋转关节模组、线性关节模组、灵巧手执行器、集成驱控。</li>
+<li>产业链公司：A 股、港股、新三板、拟 IPO 公司，以及关键未上市供应商。</li>
+</ul>
+<p>暂不展开：</p>
+<ul>
+<li>大模型、具身智能算法、训练数据、仿真平台。</li>
+<li>激光雷达、视觉传感器、芯片、整机品牌估值。</li>
+<li>短线交易、技术分析、每日涨跌归因。</li>
+</ul>
+<h2 id="4">4. 证据等级系统</h2>
+<p>每家公司、每个业务方向都要打证据等级。</p>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>定义</th>
+<th>研究动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>只有概念表述，缺少产品和客户证据</td>
+<td>记录，不进入重点池</td>
+</tr>
+<tr>
+<td>1</td>
+<td>有研发项目、专利、样品、实验室成果</td>
+<td>放入观察名单</td>
+</tr>
+<tr>
+<td>2</td>
+<td>有送样、客户测试、样机验证</td>
+<td>每月跟踪公告和调研纪要</td>
+</tr>
+<tr>
+<td>3</td>
+<td>有小批量订单、定点、明确客户突破</td>
+<td>进入重点池</td>
+</tr>
+<tr>
+<td>4</td>
+<td>财报出现收入或业务单独披露</td>
+<td>建立收入和产能跟踪</td>
+</tr>
+<tr>
+<td>5</td>
+<td>收入、毛利、客户、产能连续验证</td>
+<td>进入深度研究和模拟组合候选</td>
+</tr>
+</tbody>
+</table>
+<p>原则：</p>
+<ul>
+<li>3 级以下不做收入预测。</li>
+<li>4 级以下不把公司当作机器人业务兑现标的。</li>
+<li>任何“客户传闻”必须有公告、财报、调研纪要、客户侧信息或多方媒体交叉验证。</li>
+</ul>
+<h2 id="5">5. 资料可信度分层</h2>
+<table>
+<thead>
+<tr>
+<th>可信度</th>
+<th>来源</th>
+<th>使用方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>年报、半年报、季报、公告、招股书、政府文件、公司官网</td>
+<td>可作为资产地图主证据</td>
+</tr>
+<tr>
+<td>B</td>
+<td>机构调研纪要、公开路演、展会演讲、专利数据库</td>
+<td>可作为边际变化证据</td>
+</tr>
+<tr>
+<td>C</td>
+<td>产业媒体、券商研报、行业白皮书</td>
+<td>可作为线索，必须二次验证</td>
+</tr>
+<tr>
+<td>D</td>
+<td>社区传闻、短视频、论坛、未署名供应链消息</td>
+<td>只作为待验证线索</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6">6. 六个月路线图</h2>
+<h3 id="1_1">第 1 个月：技术骨架月</h3>
+<p>目标：建立关节模组和核心零部件的基础语言体系。</p>
+<p>重点问题：</p>
+<ul>
+<li>一台人形机器人为什么需要旋转关节和线性执行器？</li>
+<li>谐波减速器、行星减速器、摆线减速器的差异是什么？</li>
+<li>行星滚柱丝杠为什么比滚珠丝杠更适合高负载、高冲击场景？</li>
+<li>无框力矩电机为什么适合机器人关节？</li>
+<li>六维力传感器和关节扭矩传感器分别解决什么问题？</li>
+</ul>
+<p>产出：</p>
+<ul>
+<li>《技术工艺卡点手册 v0.1》</li>
+<li>10 张技术卡片</li>
+<li>1 张“人形机器人执行层拆解图”</li>
+<li>第 1 批术语表，至少 50 个词</li>
+</ul>
+<h3 id="2_1">第 2 个月：资产地图月</h3>
+<p>目标：把“知道几个热门公司”升级成“知道完整玩家版图”。</p>
+<p>公司分组：</p>
+<ul>
+<li>谐波减速器</li>
+<li>行星滚柱丝杠与滚珠丝杠</li>
+<li>无框力矩电机与伺服</li>
+<li>六维力与力矩传感器</li>
+<li>关节模组总成</li>
+<li>设备、材料、轴承、检测</li>
+</ul>
+<p>资产地图字段：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股票代码</td>
+<td>A 股、港股、新三板或未上市</td>
+</tr>
+<tr>
+<td>公司名称</td>
+<td>全称</td>
+</tr>
+<tr>
+<td>细分环节</td>
+<td>谐波、丝杠、电机、传感器、模组等</td>
+</tr>
+<tr>
+<td>机器人业务证据</td>
+<td>公告、年报、官网、调研纪要</td>
+</tr>
+<tr>
+<td>证据等级</td>
+<td>0-5</td>
+</tr>
+<tr>
+<td>业务纯度</td>
+<td>机器人业务占收入或战略位置</td>
+</tr>
+<tr>
+<td>技术来源</td>
+<td>自研、并购、参股、合作</td>
+</tr>
+<tr>
+<td>产能状态</td>
+<td>样线、中试、量产、规划</td>
+</tr>
+<tr>
+<td>客户证据</td>
+<td>送样、定点、小批量、批量</td>
+</tr>
+<tr>
+<td>关键风险</td>
+<td>技术、客户、产能、估值、治理</td>
+</tr>
+</tbody>
+</table>
+<p>产出：</p>
+<ul>
+<li>《资产地图 v0.5》</li>
+<li>至少 50 家相关公司或未上市供应商</li>
+<li>初步剔除名单，记录剔除原因</li>
+</ul>
+<h3 id="3_1">第 3 个月：重点池筛选月</h3>
+<p>目标：从全市场名单里筛出 15-25 家长期跟踪对象。</p>
+<p>筛选维度：</p>
+<ul>
+<li>业务纯度：机器人业务是否可能影响未来 3 年收入和利润。</li>
+<li>技术位置：是否处于高壁垒、高价值量、高失效率环节。</li>
+<li>客户验证：是否有整机厂、机器人厂、工业客户验证。</li>
+<li>产能兑现：是否有真实厂房、设备、资本开支和人员扩张。</li>
+<li>财报痕迹：是否能在收入、毛利、在建工程、研发项目里看到变化。</li>
+</ul>
+<p>分档规则：</p>
+<table>
+<thead>
+<tr>
+<th>档位</th>
+<th style="text-align: right;">数量</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 档</td>
+<td style="text-align: right;">3-5 家</td>
+<td>每月重点跟踪，后续做深度报告</td>
+</tr>
+<tr>
+<td>B 档</td>
+<td style="text-align: right;">8-12 家</td>
+<td>每季度更新，关注证据等级变化</td>
+</tr>
+<tr>
+<td>C 档</td>
+<td style="text-align: right;">8-10 家</td>
+<td>观察名单，有新证据再升级</td>
+</tr>
+</tbody>
+</table>
+<p>产出：</p>
+<ul>
+<li>《重点跟踪公司池 v1.0》</li>
+<li>6-8 只模拟组合，等权建立</li>
+<li>第 1 次月度复盘</li>
+</ul>
+<h3 id="4_1">第 4 个月：季度信号演练月</h3>
+<p>目标：训练从财报、公告、调研纪要中抓边际变化。</p>
+<p>跟踪关键词：</p>
+<ul>
+<li>机器人</li>
+<li>人形机器人</li>
+<li>具身智能</li>
+<li>关节</li>
+<li>执行器</li>
+<li>丝杠</li>
+<li>减速器</li>
+<li>六维力</li>
+<li>无框力矩</li>
+<li>线性驱动</li>
+<li>送样</li>
+<li>小批量</li>
+<li>定点</li>
+<li>产能</li>
+<li>在建工程</li>
+</ul>
+<p>每家公司只回答三个问题：</p>
+<ol>
+<li>本季度新增积极信号是什么？</li>
+<li>本季度新增负面信号是什么？</li>
+<li>证据等级是否上调、下调或维持？</li>
+</ol>
+<p>产出：</p>
+<ul>
+<li>《第 1 次季度信号追踪表》</li>
+<li>A 档公司证据等级更新</li>
+<li>第 2 次月度复盘</li>
+</ul>
+<h3 id="5_1">第 5 个月：两家公司深潜月</h3>
+<p>目标：训练单公司研究能力。</p>
+<p>选择标准：</p>
+<ul>
+<li>1 家相对确定性公司：已有收入、产品或客户证据。</li>
+<li>1 家弹性公司：仍处于送样、小批量或新业务突破阶段。</li>
+</ul>
+<p>单公司报告结构：</p>
+<ol>
+<li>公司到底靠什么赚钱？</li>
+<li>机器人业务在公司里占多大位置？</li>
+<li>它处在关节产业链哪一环？</li>
+<li>技术壁垒是真壁垒还是普通制造能力？</li>
+<li>客户和订单证据到哪一级？</li>
+<li>未来 3 年收入弹性来自哪里？</li>
+<li>最大风险是什么？</li>
+<li>哪些信号出现后，我会提高或降低判断？</li>
+</ol>
+<p>产出：</p>
+<ul>
+<li>《公司 A 深度跟踪报告》</li>
+<li>《公司 B 深度跟踪报告》</li>
+<li>第 3 次月度复盘</li>
+</ul>
+<h3 id="6_1">第 6 个月：系统成型月</h3>
+<p>目标：把前 5 个月的材料整合成可持续研究系统。</p>
+<p>动作：</p>
+<ul>
+<li>更新《技术工艺卡点手册》到 v1.0。</li>
+<li>更新《资产地图》到 v1.0。</li>
+<li>更新 A/B/C 公司池。</li>
+<li>复盘模拟组合收益、波动和误判来源。</li>
+<li>写《半年度投资研究备忘录》。</li>
+</ul>
+<p>半年度备忘录问题：</p>
+<ol>
+<li>我现在最看好的 3 个细分环节是什么？</li>
+<li>哪些环节热度高，但证据不足？</li>
+<li>哪些公司从概念变成了可跟踪对象？</li>
+<li>哪些公司被剔除，为什么？</li>
+<li>我过去 6 个月最大的认知变化是什么？</li>
+<li>下一阶段要重点验证什么？</li>
+<li>我是否已经具备小仓位试错的研究基础？</li>
+</ol>
+<p>产出：</p>
+<ul>
+<li>《半年度投资研究备忘录 v1.0》</li>
+<li>《资产地图 v1.0》</li>
+<li>《技术工艺卡点手册 v1.0》</li>
+<li>下一阶段 6 个月计划草案</li>
+</ul>
+<h2 id="7">7. 模拟组合规则</h2>
+<p>第 3 个月末建立模拟组合。</p>
+<p>规则：</p>
+<ul>
+<li>初始 6-8 只，等权。</li>
+<li>不做短线交易。</li>
+<li>每月只允许调整一次。</li>
+<li>每次调仓必须写明原因。</li>
+<li>只允许基于证据等级、财报信号、客户验证、产能兑现进行调整。</li>
+</ul>
+<p>月度复盘模板：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>回答</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本月组合涨跌幅</td>
+<td>记录，不解释过度</td>
+</tr>
+<tr>
+<td>最大贡献公司</td>
+<td>是基本面信号还是市场情绪</td>
+</tr>
+<tr>
+<td>最大拖累公司</td>
+<td>是否影响原始逻辑</td>
+</tr>
+<tr>
+<td>有无证据等级变化</td>
+<td>上调、下调或维持</td>
+</tr>
+<tr>
+<td>是否需要调仓</td>
+<td>是/否，理由</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8">8. 每周研究日志模板</h2>
+<pre><code class="language-markdown"># 第 X 周研究日志
+
+## 本周投入
+- 技术学习：
+- 公司研究：
+- 产业动态：
+- 输出整理：
+
+## 本周学到的 3 个关键点
+1.
+2.
+3.
+
+## 本周新增公司或线索
+| 公司 | 细分环节 | 证据 | 证据等级 | 下一步 |
+| --- | --- | --- | --- | --- |
+
+## 本周一个判断变化
+- 原判断：
+- 新判断：
+- 触发证据：
+
+## 下周任务
+1.
+2.
+3.
+</code></pre>
+<h2 id="9">9. 合格标准</h2>
+<p>6 个月结束时，用以下标准自检：</p>
+<ul>
+<li>能讲清楚旋转关节和线性执行器的差异。</li>
+<li>能解释谐波减速器、行星滚柱丝杠、六维力传感器的核心难点。</li>
+<li>能列出至少 50 家相关公司或供应商。</li>
+<li>能把其中 15-25 家分入 A/B/C 跟踪池。</li>
+<li>能识别“概念、送样、小批量、收入兑现”的区别。</li>
+<li>至少完成 2 篇公司深度报告。</li>
+<li>有一个模拟组合，并完成至少 3 次月度复盘。</li>
+<li>能说清楚自己最看好的细分环节，以及暂时不碰的环节。</li>
+</ul>
+<h2 id="10">10. 投资纪律</h2>
+<ul>
+<li>前 3 个月不以真实买入为目标，除非已有独立研究基础。</li>
+<li>任何真实交易都必须先写一页买入备忘录。</li>
+<li>不能因为短期涨跌改变证据等级。</li>
+<li>不能把“市场热度”当作“产业兑现”。</li>
+<li>不能把“送样”直接等同于“收入”。</li>
+<li>不能把“产能规划”直接等同于“利润”。</li>
+<li>不能把“进入供应链传闻”直接等同于“客户订单”。</li>
+</ul>
+<h2 id="11">11. 推荐起步资料</h2>
+<p>视频和文章会变化，使用时以最新可访问链接为准。优先看能帮助你理解结构、运动原理和产业卡点的内容。</p>
+<h3 id="bilibili">Bilibili</h3>
+<ul>
+<li>工业机器人技术基础全 130 讲：重点看第 53-58 讲，覆盖 RV 减速器、谐波减速器、行星减速器、滚珠丝杠。</li>
+<li>https://www.bilibili.com/video/BV1hAp8zGErm/</li>
+<li>谐波减速器原理解释，熟肉搬运，适合第一周快速建立直观理解。</li>
+<li>https://www.bilibili.com/video/BV1bD4y1d7vg/</li>
+<li>Ewellix - Planetary roller screws，行星滚柱丝杠动画演示。</li>
+<li>https://www.bilibili.com/video/BV1e64y1S7a2/</li>
+<li>人形机器人最难做的本体零件行星滚柱丝杠，一文讲透行星滚柱丝杠。</li>
+<li>https://www.bilibili.com/video/BV1kx4y147c7/</li>
+<li>绿的谐波 CTO 储建华《智能机器人谐波传动及行星滚柱丝杠技术新发展》。</li>
+<li>https://www.bilibili.com/video/BV1EazNB5ESt/</li>
+</ul>
+<h3 id="youtube">YouTube / 英文资料</h3>
+<ul>
+<li>Harmonic drives explained，Jetpack Academy，谐波减速器原理。</li>
+<li>https://youtu.be/7QidXf9pFYo</li>
+<li>Ewellix - Planetary roller screws，行星滚柱丝杠演示。</li>
+<li>https://www.youtube.com/watch?v=-JU4Xxwv1TI</li>
+<li>How Tesla Bot Actuators Work，FIRGELLI 文章，理解 Optimus 线性执行器、滚柱丝杠和功率重量比约束。</li>
+<li>https://www.firgelliauto.com/en-pt/blogs/actuators/how-do-tesla-bot-actuators-actually-work</li>
+<li>Why ATI Force/Torque Sensors，理解多轴力/力矩传感器。</li>
+<li>https://www.automate.org/robotics/videos/why-ati-force-torque-sensors</li>
+<li>Alva Industries frameless and framed torque motors，理解无框力矩电机为什么适合紧凑机器人关节。</li>
+<li>https://www.automation-mag.com/videos/99693-alva-industries-explains-frameless-and-framed-torque-motors-for-engineers</li>
+</ul>
+    </article>
+  </main>
+</body>
+</html>
