@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>北京周末行程时间线｜6月13日-14日</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f7f2;
+      --panel: #ffffff;
+      --ink: #222426;
+      --muted: #686f73;
+      --line: #d8d6cd;
+      --red: #b8483b;
+      --green: #426b5b;
+      --blue: #315f7d;
+      --gold: #bd8f30;
+      --soft-red: #f5e7e3;
+      --soft-green: #e4eee9;
+      --soft-blue: #e3edf3;
+      --soft-gold: #f3ead4;
+      --shadow: 0 18px 48px rgba(40, 42, 44, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background:
+        linear-gradient(90deg, rgba(49, 95, 125, 0.08) 0 1px, transparent 1px 100%),
+        linear-gradient(180deg, rgba(184, 72, 59, 0.05) 0, transparent 420px),
+        var(--paper);
+      background-size: 32px 32px, 100% 100%, 100% 100%;
+      color: var(--ink);
+      line-height: 1.6;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(49, 95, 125, 0.35);
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.45fr 0.95fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .hero-main,
+    .hero-side,
+    .panel,
+    .day,
+    .timeline-item {
+      background: var(--panel);
+      border: 1px solid rgba(34, 36, 38, 0.08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      width: 168px;
+      height: 168px;
+      border: 2px solid rgba(184, 72, 59, 0.2);
+      border-radius: 50%;
+      background:
+        linear-gradient(90deg, transparent 49%, rgba(184, 72, 59, 0.18) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, rgba(49, 95, 125, 0.16) 50%, transparent 51%);
+      opacity: 0.75;
+    }
+
+    .eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 36, 38, 0.12);
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-size: 40px;
+      line-height: 1.15;
+      font-weight: 750;
+      letter-spacing: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lead {
+      max-width: 700px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-side {
+      padding: 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .weather-card {
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(34, 36, 38, 0.08);
+      background: #fbfbf8;
+    }
+
+    .weather-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .weather-card span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .weather-card.red {
+      background: var(--soft-red);
+    }
+
+    .weather-card.blue {
+      background: var(--soft-blue);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    .panel h2,
+    .day-title h2 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .panel p,
+    .panel li,
+    .timeline-item p,
+    .timeline-item li {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .panel ul,
+    .timeline-item ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .day {
+      padding: 22px;
+    }
+
+    .day-title {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .date-chip {
+      min-width: 88px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 700;
+      color: #fff;
+      background: var(--green);
+    }
+
+    .date-chip.red {
+      background: var(--red);
+    }
+
+    .date-chip span {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 20px;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 14px 14px 14px 16px;
+      margin-bottom: 12px;
+      box-shadow: none;
+      background: #fff;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -25px;
+      top: 19px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--red);
+    }
+
+    .timeline-item.green::before {
+      border-color: var(--green);
+    }
+
+    .timeline-item.blue::before {
+      border-color: var(--blue);
+    }
+
+    .timeline-item.gold::before {
+      border-color: var(--gold);
+    }
+
+    .time {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #f0f0ea;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      white-space: nowrap;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    .route {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #f7f7f2;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .route strong {
+      color: var(--ink);
+    }
+
+    .notes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .source-list {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .source-list a {
+      margin-right: 12px;
+    }
+
+    .print-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 12px;
+    }
+
+    .print-button {
+      border: 1px solid rgba(34, 36, 38, 0.14);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 8px;
+      min-height: 36px;
+      padding: 0 12px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .print-button:focus-visible {
+      outline: 3px solid rgba(49, 95, 125, 0.35);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .days,
+      .notes {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-main::after {
+        width: 108px;
+        height: 108px;
+        right: 18px;
+        top: 18px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 22px, 1120px);
+        padding-top: 18px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .day,
+      .panel {
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .lead {
+        font-size: 15px;
+      }
+
+      .quick-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .day-title {
+        display: grid;
+      }
+
+      .date-chip {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero-main,
+      .hero-side,
+      .panel,
+      .day,
+      .timeline-item {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .print-row {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()">打印 / 存为 PDF</button>
+    </div>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-main">
+        <div class="eyebrow" aria-label="行程标签">
+          <span class="tag">6月13日-14日</span>
+          <span class="tag">望京出发</span>
+          <span class="tag">妹妹一家四口</span>
+          <span class="tag">轻松版</span>
+        </div>
+        <h1 id="page-title">北京周末行程时间线</h1>
+        <p class="lead">12号晚到，周六不早起。第一天看胡同和北京夜生活，第二天把央美毕业展作为核心，再顺路去798。整体按“少折返、少暴晒、随时可撤退”安排。</p>
+      </div>
+
+      <aside class="hero-side" aria-label="天气摘要">
+        <div class="weather-card blue">
+          <strong>6月13日 周六</strong>
+          <span>多云/阴，约30-32℃。适合午后开始慢逛，注意防晒和补水。</span>
+        </div>
+        <div class="weather-card red">
+          <strong>6月14日 周日</strong>
+          <span>更热，有小雨风险，部分预报到33-35℃。把央美和798放这天更舒服。</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="quick-grid" aria-label="关键提醒">
+      <div class="panel">
+        <h2>核心原则</h2>
+        <p>周六睡到自然醒，周日看艺术。下午热的时候多进店、多打车。</p>
+      </div>
+      <div class="panel">
+        <h2>预约</h2>
+        <p>央美毕业季建议提前预约购票；簋街晚饭务必提前订位。</p>
+      </div>
+      <div class="panel">
+        <h2>随身</h2>
+        <p>护照原件、防晒、折叠伞、充电宝、舒服的鞋。</p>
+      </div>
+      <div class="panel">
+        <h2>不推荐</h2>
+        <p>这版不排长城。12号晚到后，周六早起远郊风险太高。</p>
+      </div>
+    </section>
+
+    <section class="days" aria-label="两日时间线">
+      <article class="day">
+        <div class="day-title">
+          <div>
+            <h2>胡同慢逛 + 簋街晚饭</h2>
+            <p>从望京出发，路线短、北京味足，适合恢复体力。</p>
+          </div>
+          <div class="date-chip">
+            6/13
+            <span>周六</span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <section class="timeline-item green">
+            <div class="time">11:00-12:00</div>
+            <h3>自然醒，望京早午饭</h3>
+            <p>不要急着进城。先吃点清淡的，检查证件、伞和充电宝。</p>
+          </section>
+
+          <section class="timeline-item gold">
+            <div class="time">12:30-14:00</div>
+            <h3>国子监街 / 五道营胡同 / 雍和宫外圈</h3>
+            <p>这一带比南锣鼓巷安静，适合先找胡同感觉。若有兴趣，可进孔庙和国子监博物馆；只想轻松就走街、拍照、喝咖啡。</p>
+            <div class="route"><strong>建议走法：</strong>雍和宫附近下车 -> 国子监街 -> 五道营胡同 -> 咖啡/小店休息。</div>
+          </section>
+
+          <section class="timeline-item blue">
+            <div class="time">14:30-16:30</div>
+            <h3>南锣鼓巷周边胡同</h3>
+            <p>南锣主街人多，把它当入口就好。重点走周边支巷，会更像真正的北京胡同。</p>
+            <div class="route"><strong>推荐路线：</strong>南锣鼓巷地铁站 -> 南锣主街短逛 -> 雨儿胡同 -> 帽儿胡同 -> 菊儿胡同 -> 鼓楼/钟楼外拍。</div>
+          </section>
+
+          <section class="timeline-item">
+            <div class="time">16:30-17:30</div>
+            <h3>烟袋斜街 / 什刹海，或直接休息</h3>
+            <p>有体力就走到银锭桥看水边傍晚。若天气闷热或人太多，直接打车去簋街附近坐下休息。</p>
+          </section>
+
+          <section class="timeline-item red">
+            <div class="time">17:45-19:30</div>
+            <h3>簋街晚饭</h3>
+            <p>周六晚饭高峰会排队，建议订17:30-18:00的桌。小龙虾、烤鱼、北京菜都可以，氛围比精致餐厅更有北京夜生活感。</p>
+          </section>
+
+          <section class="timeline-item green">
+            <div class="time">20:00以后</div>
+            <h3>回望京</h3>
+            <p>第二天看央美，别把周六拖太晚。想喝东西可以回望京附近解决。</p>
+          </section>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-title">
+          <div>
+            <h2>央美毕业展 + 798艺术区</h2>
+            <p>给17岁女孩留足看展时间，14岁男孩也有文创、装置和拍照点。</p>
+          </div>
+          <div class="date-chip red">
+            6/14
+            <span>周日</span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <section class="timeline-item green">
+            <div class="time">09:00-09:25</div>
+            <h3>望京出发去央美</h3>
+            <p>中央美术学院美术馆在花家地南街8号，从望京过去很近。周日可能热，尽量上午进馆。</p>
+          </section>
+
+          <section class="timeline-item red">
+            <div class="time">09:30-12:30</div>
+            <h3>央美美术馆：焕彩共生毕业季</h3>
+            <p>这次正赶上本科毕业展第二阶段，重点院系包括中国画、书法、版画、雕塑、人文、设计、建筑。建议不要赶，按兴趣慢看。</p>
+            <div class="route"><strong>看展顺序：</strong>设计/建筑 -> 雕塑/版画 -> 中国画/书法 -> 文创店或咖啡短休。</div>
+          </section>
+
+          <section class="timeline-item gold">
+            <div class="time">12:30-13:45</div>
+            <h3>午饭和降温</h3>
+            <p>在花家地、望京或丽都附近吃饭。下午还有798，午饭不要安排太远。</p>
+          </section>
+
+          <section class="timeline-item blue">
+            <div class="time">14:15-16:30</div>
+            <h3>798艺术区</h3>
+            <p>从央美到798顺路。不要把798当步行拉练，选1-2个展馆或画廊，再逛文创和咖啡店即可。</p>
+            <div class="route"><strong>轻松走法：</strong>打车到798核心区 -> 看当天感兴趣的展 -> 文创店 -> 咖啡/甜品。</div>
+          </section>
+
+          <section class="timeline-item">
+            <div class="time">16:30-18:00</div>
+            <h3>雨天或疲劳时提前撤</h3>
+            <p>如果下雨、闷热或大家看展疲劳，直接回望京休息。不要为了“逛完”消耗体力。</p>
+          </section>
+
+          <section class="timeline-item green">
+            <div class="time">18:00以后</div>
+            <h3>望京 / 丽都晚饭</h3>
+            <p>晚饭放回东北边，避免周日晚跨城。可以选烤鸭、涮羊肉、北京菜或他们想吃的中餐。</p>
+          </section>
+        </div>
+      </article>
+    </section>
+
+    <section class="notes" aria-label="备选和预约说明">
+      <div class="panel">
+        <h2>雨天备选</h2>
+        <ul>
+          <li>周六下雨：缩短南锣主街，改成五道营咖啡店 + 簋街早晚饭。</li>
+          <li>周日下雨：央美不变，798只保留室内展馆和咖啡，不走户外。</li>
+          <li>如果临时很想看经典景点，故宫可替换798，但周日热且折返更累。</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>预约清单</h2>
+        <ul>
+          <li>央美美术馆：提前在官方渠道预约/购票，带好有效证件。</li>
+          <li>孔庙和国子监：可通过官方公众号购票，也可当天按现场规则处理。</li>
+          <li>簋街：提前订17:30-18:00的桌，避开排队高峰。</li>
+          <li>所有人：护照原件随身带，尤其是外籍或从日本来访的家人。</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="source-list">
+      信息参考：
+      <a href="https://www.cafamuseum.org/" target="_blank" rel="noreferrer">央美美术馆</a>
+      <a href="https://www.cafamuseum.org/exhibit/detail/1083" target="_blank" rel="noreferrer">央美毕业季展览</a>
+      <a href="https://www.cafamuseum.org/exhibit/newsdetail/4092" target="_blank" rel="noreferrer">本科毕业展阶段说明</a>
+      <a href="https://www.kmgzj.com/cgzn/" target="_blank" rel="noreferrer">孔庙和国子监</a>
+      <span>天气以出行前一天官方预报为准。</span>
+    </footer>
+  </main>
+</body>
+</html>
