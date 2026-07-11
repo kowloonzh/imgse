@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>纳斯达克100定投与BTD回测</title>
+<style>
+:root{color-scheme:light;--bg:#f4f5f7;--surface:#fff;--ink:#1f2933;--muted:#697386;--line:#d8dde5;--blue:#1769aa;--green:#13795b;--red:#b42318;--amber:#a15c00}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;font-variant-numeric:tabular-nums}
+main{width:min(1420px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}h1{font-size:30px;margin:0 0 8px;letter-spacing:0}h2{font-size:20px;margin:0 0 14px;letter-spacing:0}p{line-height:1.65}.subtitle{color:var(--muted);margin:0 0 24px}.method{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);background:var(--surface);margin-bottom:28px}.method div{padding:16px;border-right:1px solid var(--line)}.method div:last-child{border-right:0}.label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.value{font-size:18px;font-weight:650}
+.section{margin-top:30px}.table-wrap{overflow:auto;border:1px solid var(--line);background:var(--surface)}table{width:100%;border-collapse:collapse;white-space:nowrap}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:right;font-size:13px}th{background:#eef1f4;color:#4b5563;font-weight:650;position:sticky;top:0}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}tbody tr:last-child td{border-bottom:0}.btd-row{background:#f2f8f5}.plain-row{background:#fff}.metric-good{color:var(--green);font-weight:650}.metric-warn{color:var(--amber);font-weight:650}
+.compare-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.compare{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--blue);padding:16px;border-radius:6px}.compare h3{font-size:18px;margin:0 0 14px}.compare dl{margin:0}.compare dl div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid #edf0f3}.compare dt{color:var(--muted);font-size:12px}.compare dd{margin:0;font-weight:650;font-size:13px}.notes{border-left:4px solid var(--amber);background:#fff8ed;padding:14px 18px;margin-top:28px}.notes ul{margin:8px 0 0;padding-left:20px}.notes li{margin:7px 0;line-height:1.55}.footer{color:var(--muted);font-size:12px;margin-top:24px}
+@media(max-width:900px){.method{grid-template-columns:repeat(2,1fr)}.method div:nth-child(2){border-right:0}.method div:nth-child(-n+2){border-bottom:1px solid var(--line)}.compare-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){main{width:min(100% - 20px,1420px);padding-top:20px}h1{font-size:24px}.method,.compare-grid{grid-template-columns:1fr}.method div{border-right:0;border-bottom:1px solid var(--line)}.method div:last-child{border-bottom:0}}
+</style>
+</head>
+<body><main>
+<h1>纳斯达克100：月定投 vs BTD按日补仓</h1>
+<p class="subtitle">分别从 2000、2005、2010、2015、2020 年开始，持续投资至数据最新日。数据源：FRED NASDAQ100 日度收盘价。</p>
+<section class="method">
+  <div><span class="label">基础月投入</span><span class="value">$100.00</span></div>
+  <div><span class="label">BTD 回撤阈值</span><span class="value">10.00%</span></div>
+  <div><span class="label">滚动高点窗口</span><span class="value">5 年</span></div>
+  <div><span class="label">执行规则</span><span class="value">信号强度 × 月投入</span></div>
+</section>
+
+<section class="section">
+<h2>完整结果</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>起点</th><th>策略</th><th>实际区间</th><th>月投次数</th><th>BTD天数</th><th>强度合计</th><th>总投入</th><th>终值</th><th>盈利</th><th>年化 IRR</th><th>MDD</th><th>终值倍数</th></tr></thead>
+<tbody>
+
+<tr class="plain-row"><td>2000</td><td>每月定投</td><td>20000103–20260710</td><td>319</td><td>0</td><td>0</td><td>$31,900.00</td><td>$344,144.18</td><td>$312,244.18</td><td class="metric-good">15.01%</td><td class="metric-warn">82.90%</td><td class="metric-good">10.79x</td></tr>
+
+<tr class="btd-row"><td>2000</td><td>每月定投 &#43; BTD按日补仓</td><td>20000103–20260710</td><td>319</td><td>2899</td><td>16963</td><td>$1,728,200.00</td><td>$33,643,856.11</td><td>$31,915,656.11</td><td class="metric-good">14.44%</td><td class="metric-warn">82.90%</td><td class="metric-good">19.47x</td></tr>
+
+<tr class="plain-row"><td>2005</td><td>每月定投</td><td>20050103–20260710</td><td>259</td><td>0</td><td>0</td><td>$25,900.00</td><td>$226,822.76</td><td>$200,922.76</td><td class="metric-good">17.28%</td><td class="metric-warn">53.71%</td><td class="metric-good">8.76x</td></tr>
+
+<tr class="btd-row"><td>2005</td><td>每月定投 &#43; BTD按日补仓</td><td>20050103–20260710</td><td>259</td><td>1362</td><td>3711</td><td>$397,000.00</td><td>$5,470,336.28</td><td>$5,073,336.28</td><td class="metric-good">18.99%</td><td class="metric-warn">53.71%</td><td class="metric-good">13.78x</td></tr>
+
+<tr class="plain-row"><td>2010</td><td>每月定投</td><td>20100104–20260710</td><td>199</td><td>0</td><td>0</td><td>$19,900.00</td><td>$117,256.48</td><td>$97,356.48</td><td class="metric-good">19.08%</td><td class="metric-warn">35.56%</td><td class="metric-good">5.89x</td></tr>
+
+<tr class="btd-row"><td>2010</td><td>每月定投 &#43; BTD按日补仓</td><td>20100104–20260710</td><td>199</td><td>647</td><td>1420</td><td>$161,900.00</td><td>$614,376.40</td><td>$452,476.40</td><td class="metric-good">20.91%</td><td class="metric-warn">35.56%</td><td class="metric-good">3.79x</td></tr>
+
+<tr class="plain-row"><td>2015</td><td>每月定投</td><td>20150102–20260710</td><td>139</td><td>0</td><td>0</td><td>$13,900.00</td><td>$48,007.38</td><td>$34,107.38</td><td class="metric-good">20.11%</td><td class="metric-warn">35.56%</td><td class="metric-good">3.45x</td></tr>
+
+<tr class="btd-row"><td>2015</td><td>每月定投 &#43; BTD按日补仓</td><td>20150102–20260710</td><td>139</td><td>568</td><td>1336</td><td>$147,500.00</td><td>$416,633.63</td><td>$269,133.63</td><td class="metric-good">23.91%</td><td class="metric-warn">35.56%</td><td class="metric-good">2.82x</td></tr>
+
+<tr class="plain-row"><td>2020</td><td>每月定投</td><td>20200102–20260710</td><td>79</td><td>0</td><td>0</td><td>$7,900.00</td><td>$15,810.84</td><td>$7,910.84</td><td class="metric-good">21.16%</td><td class="metric-warn">35.56%</td><td class="metric-good">2.00x</td></tr>
+
+<tr class="btd-row"><td>2020</td><td>每月定投 &#43; BTD按日补仓</td><td>20200102–20260710</td><td>79</td><td>472</td><td>1223</td><td>$130,200.00</td><td>$321,545.25</td><td>$191,345.25</td><td class="metric-good">26.44%</td><td class="metric-warn">35.56%</td><td class="metric-good">2.47x</td></tr>
+
+</tbody></table></div>
+</section>
+
+<section class="section">
+<h2>BTD 相对单纯定投</h2>
+<div class="compare-grid">
+<article class="compare"><h3>2000 起点</h3><dl>
+<div><dt>IRR 差值</dt><dd>-0.57 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>1.80x</dd></div>
+<div><dt>投入资金放大</dt><dd>54.18x</dd></div>
+<div><dt>最终资产放大</dt><dd>97.76x</dd></div>
+</dl></article>
+<article class="compare"><h3>2005 起点</h3><dl>
+<div><dt>IRR 差值</dt><dd>&#43;1.72 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>1.57x</dd></div>
+<div><dt>投入资金放大</dt><dd>15.33x</dd></div>
+<div><dt>最终资产放大</dt><dd>24.12x</dd></div>
+</dl></article>
+<article class="compare"><h3>2010 起点</h3><dl>
+<div><dt>IRR 差值</dt><dd>&#43;1.83 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>0.64x</dd></div>
+<div><dt>投入资金放大</dt><dd>8.14x</dd></div>
+<div><dt>最终资产放大</dt><dd>5.24x</dd></div>
+</dl></article>
+<article class="compare"><h3>2015 起点</h3><dl>
+<div><dt>IRR 差值</dt><dd>&#43;3.80 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>0.82x</dd></div>
+<div><dt>投入资金放大</dt><dd>10.61x</dd></div>
+<div><dt>最终资产放大</dt><dd>8.68x</dd></div>
+</dl></article>
+<article class="compare"><h3>2020 起点</h3><dl>
+<div><dt>IRR 差值</dt><dd>&#43;5.28 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>1.23x</dd></div>
+<div><dt>投入资金放大</dt><dd>16.48x</dd></div>
+<div><dt>最终资产放大</dt><dd>20.34x</dd></div>
+</dl></article></div>
+</section>
+
+<aside class="notes"><strong>口径说明</strong><ul>
+<li>每月第一个交易日投入固定金额；BTD 信号出现的每个交易日，再投入“信号强度 × 月投入”。</li>
+<li>允许碎股，不计手续费、税费和滑点；期末按最新收盘价全部估值。</li>
+<li>IRR 使用实际日期现金流计算；终值倍数为“期末资产 ÷ 累计投入”。</li>
+<li>MDD 使用资金流调整后的指数净值。两种策略都只买不卖且始终持有同一指数，因此 MDD 相同。</li>
+<li>BTD 是持续状态信号，按日执行会产生大量重复补仓，报告中的总投入规模必须与收益指标一起评估。</li>
+</ul></aside>
+<p class="footer">生成时间：2026-07-11 15:26 CST</p>
+</main></body></html>
