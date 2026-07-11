@@ -15,50 +15,50 @@ main{width:min(1420px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}h1{fo
 </style>
 </head>
 <body><main>
-<h1>纳斯达克100：<span>BTD 14% vs 溢价过滤</span></h1>
+<h1>纳斯达克100：<span>BTD 14% 与低溢价加倍</span></h1>
 <p class="subtitle">分别从 2000、2005、2010、2015、2020 年开始，持续投资至数据最新日。指数数据来自 FRED，159501 收盘价和单位净值来自 Tushare。</p>
 <section class="method">
   <div><span class="label">基础月投入</span><span class="value">$100.00</span></div>
   <div><span class="label">BTD阈值 / 滚动窗口</span><span class="value">14.00% / 5 年</span></div>
-  <div><span class="label">近似溢价上限</span><span class="value">≤ 5.00%</span></div>
-  <div><span class="label">溢价补仓额度</span><span class="value">每日 1 × 月投入</span></div>
+  <div><span class="label">加倍溢价条件</span><span class="value">≤ 3.00%</span></div>
+  <div><span class="label">符合条件时</span><span class="value">信号份数 × 2</span></div>
 </section>
 
 <section class="section">
 <h2>完整结果</h2>
 <div class="table-wrap"><table>
-<thead><tr><th>起点</th><th>策略</th><th>实际区间</th><th>月投次数</th><th>补仓天数</th><th>补仓份数</th><th>未执行天数</th><th>总投入</th><th>终值</th><th>盈利</th><th>年化 IRR</th><th>MDD</th><th>终值倍数</th></tr></thead>
+<thead><tr><th>起点</th><th>策略</th><th>实际区间</th><th>月投次数</th><th>补仓天数</th><th>补仓份数</th><th>加倍天数</th><th>总投入</th><th>终值</th><th>盈利</th><th>年化 IRR</th><th>MDD</th><th>终值倍数</th></tr></thead>
 <tbody>
 
 <tr class="plain-row"><td>2000</td><td>每月定投</td><td>20000103–20260710</td><td>319</td><td>0</td><td>0</td><td>0</td><td>$31,900.00</td><td>$344,144.18</td><td>$312,244.18</td><td class="metric-good">15.01%</td><td class="metric-warn">82.90%</td><td class="metric-good">10.79x</td></tr>
 
 <tr class="btd-row"><td>2000</td><td>每月定投 &#43; BTD 14%按日补仓</td><td>20000103–20260710</td><td>319</td><td>2558</td><td>15490</td><td>0</td><td>$1,580,900.00</td><td>$31,808,645.88</td><td>$30,227,745.88</td><td class="metric-good">14.43%</td><td class="metric-warn">82.90%</td><td class="metric-good">20.12x</td></tr>
 
-<tr class="btd-row"><td>2000</td><td>每月定投 &#43; 溢价≤5%按日补仓</td><td>20000103–20260710</td><td>319</td><td>600</td><td>600</td><td>6070</td><td>$91,900.00</td><td>$436,671.04</td><td>$344,771.04</td><td class="metric-good">15.26%</td><td class="metric-warn">82.90%</td><td class="metric-good">4.75x</td></tr>
+<tr class="btd-row"><td>2000</td><td>每月定投 &#43; BTD 14%按日补仓且溢价≤3%时加倍</td><td>20000103–20260710</td><td>319</td><td>2558</td><td>15501</td><td>10</td><td>$1,582,000.00</td><td>$31,810,535.90</td><td>$30,228,535.90</td><td class="metric-good">14.43%</td><td class="metric-warn">82.90%</td><td class="metric-good">20.11x</td></tr>
 
 <tr class="plain-row"><td>2005</td><td>每月定投</td><td>20050103–20260710</td><td>259</td><td>0</td><td>0</td><td>0</td><td>$25,900.00</td><td>$226,822.76</td><td>$200,922.76</td><td class="metric-good">17.28%</td><td class="metric-warn">53.71%</td><td class="metric-good">8.76x</td></tr>
 
 <tr class="btd-row"><td>2005</td><td>每月定投 &#43; BTD 14%按日补仓</td><td>20050103–20260710</td><td>259</td><td>991</td><td>2662</td><td>0</td><td>$292,100.00</td><td>$4,253,485.75</td><td>$3,961,385.75</td><td class="metric-good">19.23%</td><td class="metric-warn">53.71%</td><td class="metric-good">14.56x</td></tr>
 
-<tr class="btd-row"><td>2005</td><td>每月定投 &#43; 溢价≤5%按日补仓</td><td>20050103–20260710</td><td>259</td><td>600</td><td>600</td><td>4814</td><td>$85,900.00</td><td>$319,349.62</td><td>$233,449.62</td><td class="metric-good">17.67%</td><td class="metric-warn">53.71%</td><td class="metric-good">3.72x</td></tr>
+<tr class="btd-row"><td>2005</td><td>每月定投 &#43; BTD 14%按日补仓且溢价≤3%时加倍</td><td>20050103–20260710</td><td>259</td><td>991</td><td>2673</td><td>10</td><td>$293,200.00</td><td>$4,255,375.76</td><td>$3,962,175.76</td><td class="metric-good">19.23%</td><td class="metric-warn">53.71%</td><td class="metric-good">14.51x</td></tr>
 
 <tr class="plain-row"><td>2010</td><td>每月定投</td><td>20100104–20260710</td><td>199</td><td>0</td><td>0</td><td>0</td><td>$19,900.00</td><td>$117,256.48</td><td>$97,356.48</td><td class="metric-good">19.08%</td><td class="metric-warn">35.56%</td><td class="metric-good">5.89x</td></tr>
 
 <tr class="btd-row"><td>2010</td><td>每月定投 &#43; BTD 14%按日补仓</td><td>20100104–20260710</td><td>199</td><td>384</td><td>889</td><td>0</td><td>$108,800.00</td><td>$367,922.24</td><td>$259,122.24</td><td class="metric-good">21.49%</td><td class="metric-warn">35.56%</td><td class="metric-good">3.38x</td></tr>
 
-<tr class="btd-row"><td>2010</td><td>每月定投 &#43; 溢价≤5%按日补仓</td><td>20100104–20260710</td><td>199</td><td>600</td><td>600</td><td>3555</td><td>$79,900.00</td><td>$209,783.34</td><td>$129,883.34</td><td class="metric-good">19.88%</td><td class="metric-warn">35.56%</td><td class="metric-good">2.63x</td></tr>
+<tr class="btd-row"><td>2010</td><td>每月定投 &#43; BTD 14%按日补仓且溢价≤3%时加倍</td><td>20100104–20260710</td><td>199</td><td>384</td><td>900</td><td>10</td><td>$109,900.00</td><td>$369,812.26</td><td>$259,912.26</td><td class="metric-good">21.51%</td><td class="metric-warn">35.56%</td><td class="metric-good">3.36x</td></tr>
 
 <tr class="plain-row"><td>2015</td><td>每月定投</td><td>20150102–20260710</td><td>139</td><td>0</td><td>0</td><td>0</td><td>$13,900.00</td><td>$48,007.38</td><td>$34,107.38</td><td class="metric-good">20.11%</td><td class="metric-warn">35.56%</td><td class="metric-good">3.45x</td></tr>
 
 <tr class="btd-row"><td>2015</td><td>每月定投 &#43; BTD 14%按日补仓</td><td>20150102–20260710</td><td>139</td><td>372</td><td>877</td><td>0</td><td>$101,600.00</td><td>$279,738.04</td><td>$178,138.04</td><td class="metric-good">24.50%</td><td class="metric-warn">35.56%</td><td class="metric-good">2.75x</td></tr>
 
-<tr class="btd-row"><td>2015</td><td>每月定投 &#43; 溢价≤5%按日补仓</td><td>20150102–20260710</td><td>139</td><td>600</td><td>600</td><td>2297</td><td>$73,900.00</td><td>$140,534.24</td><td>$66,634.24</td><td class="metric-good">22.16%</td><td class="metric-warn">35.56%</td><td class="metric-good">1.90x</td></tr>
+<tr class="btd-row"><td>2015</td><td>每月定投 &#43; BTD 14%按日补仓且溢价≤3%时加倍</td><td>20150102–20260710</td><td>139</td><td>372</td><td>888</td><td>10</td><td>$102,700.00</td><td>$281,628.05</td><td>$178,928.05</td><td class="metric-good">24.53%</td><td class="metric-warn">35.56%</td><td class="metric-good">2.74x</td></tr>
 
 <tr class="plain-row"><td>2020</td><td>每月定投</td><td>20200102–20260710</td><td>79</td><td>0</td><td>0</td><td>0</td><td>$7,900.00</td><td>$15,810.84</td><td>$7,910.84</td><td class="metric-good">21.16%</td><td class="metric-warn">35.56%</td><td class="metric-good">2.00x</td></tr>
 
 <tr class="btd-row"><td>2020</td><td>每月定投 &#43; BTD 14%按日补仓</td><td>20200102–20260710</td><td>79</td><td>346</td><td>848</td><td>0</td><td>$92,700.00</td><td>$231,896.80</td><td>$139,196.80</td><td class="metric-good">26.88%</td><td class="metric-warn">35.56%</td><td class="metric-good">2.50x</td></tr>
 
-<tr class="btd-row"><td>2020</td><td>每月定投 &#43; 溢价≤5%按日补仓</td><td>20200102–20260710</td><td>79</td><td>600</td><td>600</td><td>1038</td><td>$67,900.00</td><td>$108,337.70</td><td>$40,437.70</td><td class="metric-good">25.47%</td><td class="metric-warn">35.56%</td><td class="metric-good">1.60x</td></tr>
+<tr class="btd-row"><td>2020</td><td>每月定投 &#43; BTD 14%按日补仓且溢价≤3%时加倍</td><td>20200102–20260710</td><td>79</td><td>346</td><td>859</td><td>10</td><td>$93,800.00</td><td>$233,786.82</td><td>$139,986.82</td><td class="metric-good">26.92%</td><td class="metric-warn">35.56%</td><td class="metric-good">2.49x</td></tr>
 
 </tbody></table></div>
 </section>
@@ -72,11 +72,11 @@ main{width:min(1420px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}h1{fo
 <div><dt>投入资金放大</dt><dd>49.56x</dd></div>
 <div><dt>最终资产放大</dt><dd>92.43x</dd></div>
 </dl></article>
-<article class="compare"><h3>2000 · 溢价≤5%按日补仓</h3><dl>
-<div><dt>IRR 差值</dt><dd>&#43;0.25 pct</dd></div>
-<div><dt>终值倍数提升</dt><dd>0.44x</dd></div>
-<div><dt>投入资金放大</dt><dd>2.88x</dd></div>
-<div><dt>最终资产放大</dt><dd>1.27x</dd></div>
+<article class="compare"><h3>2000 · BTD 14%按日补仓且溢价≤3%时加倍</h3><dl>
+<div><dt>IRR 差值</dt><dd>-0.58 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>1.86x</dd></div>
+<div><dt>投入资金放大</dt><dd>49.59x</dd></div>
+<div><dt>最终资产放大</dt><dd>92.43x</dd></div>
 </dl></article>
 <article class="compare"><h3>2005 · BTD 14%按日补仓</h3><dl>
 <div><dt>IRR 差值</dt><dd>&#43;1.96 pct</dd></div>
@@ -84,11 +84,11 @@ main{width:min(1420px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}h1{fo
 <div><dt>投入资金放大</dt><dd>11.28x</dd></div>
 <div><dt>最终资产放大</dt><dd>18.75x</dd></div>
 </dl></article>
-<article class="compare"><h3>2005 · 溢价≤5%按日补仓</h3><dl>
-<div><dt>IRR 差值</dt><dd>&#43;0.39 pct</dd></div>
-<div><dt>终值倍数提升</dt><dd>0.42x</dd></div>
-<div><dt>投入资金放大</dt><dd>3.32x</dd></div>
-<div><dt>最终资产放大</dt><dd>1.41x</dd></div>
+<article class="compare"><h3>2005 · BTD 14%按日补仓且溢价≤3%时加倍</h3><dl>
+<div><dt>IRR 差值</dt><dd>&#43;1.96 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>1.66x</dd></div>
+<div><dt>投入资金放大</dt><dd>11.32x</dd></div>
+<div><dt>最终资产放大</dt><dd>18.76x</dd></div>
 </dl></article>
 <article class="compare"><h3>2010 · BTD 14%按日补仓</h3><dl>
 <div><dt>IRR 差值</dt><dd>&#43;2.41 pct</dd></div>
@@ -96,11 +96,11 @@ main{width:min(1420px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}h1{fo
 <div><dt>投入资金放大</dt><dd>5.47x</dd></div>
 <div><dt>最终资产放大</dt><dd>3.14x</dd></div>
 </dl></article>
-<article class="compare"><h3>2010 · 溢价≤5%按日补仓</h3><dl>
-<div><dt>IRR 差值</dt><dd>&#43;0.80 pct</dd></div>
-<div><dt>终值倍数提升</dt><dd>0.45x</dd></div>
-<div><dt>投入资金放大</dt><dd>4.02x</dd></div>
-<div><dt>最终资产放大</dt><dd>1.79x</dd></div>
+<article class="compare"><h3>2010 · BTD 14%按日补仓且溢价≤3%时加倍</h3><dl>
+<div><dt>IRR 差值</dt><dd>&#43;2.43 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>0.57x</dd></div>
+<div><dt>投入资金放大</dt><dd>5.52x</dd></div>
+<div><dt>最终资产放大</dt><dd>3.15x</dd></div>
 </dl></article>
 <article class="compare"><h3>2015 · BTD 14%按日补仓</h3><dl>
 <div><dt>IRR 差值</dt><dd>&#43;4.40 pct</dd></div>
@@ -108,11 +108,11 @@ main{width:min(1420px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}h1{fo
 <div><dt>投入资金放大</dt><dd>7.31x</dd></div>
 <div><dt>最终资产放大</dt><dd>5.83x</dd></div>
 </dl></article>
-<article class="compare"><h3>2015 · 溢价≤5%按日补仓</h3><dl>
-<div><dt>IRR 差值</dt><dd>&#43;2.05 pct</dd></div>
-<div><dt>终值倍数提升</dt><dd>0.55x</dd></div>
-<div><dt>投入资金放大</dt><dd>5.32x</dd></div>
-<div><dt>最终资产放大</dt><dd>2.93x</dd></div>
+<article class="compare"><h3>2015 · BTD 14%按日补仓且溢价≤3%时加倍</h3><dl>
+<div><dt>IRR 差值</dt><dd>&#43;4.43 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>0.79x</dd></div>
+<div><dt>投入资金放大</dt><dd>7.39x</dd></div>
+<div><dt>最终资产放大</dt><dd>5.87x</dd></div>
 </dl></article>
 <article class="compare"><h3>2020 · BTD 14%按日补仓</h3><dl>
 <div><dt>IRR 差值</dt><dd>&#43;5.72 pct</dd></div>
@@ -120,24 +120,24 @@ main{width:min(1420px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}h1{fo
 <div><dt>投入资金放大</dt><dd>11.73x</dd></div>
 <div><dt>最终资产放大</dt><dd>14.67x</dd></div>
 </dl></article>
-<article class="compare"><h3>2020 · 溢价≤5%按日补仓</h3><dl>
-<div><dt>IRR 差值</dt><dd>&#43;4.32 pct</dd></div>
-<div><dt>终值倍数提升</dt><dd>0.80x</dd></div>
-<div><dt>投入资金放大</dt><dd>8.59x</dd></div>
-<div><dt>最终资产放大</dt><dd>6.85x</dd></div>
+<article class="compare"><h3>2020 · BTD 14%按日补仓且溢价≤3%时加倍</h3><dl>
+<div><dt>IRR 差值</dt><dd>&#43;5.76 pct</dd></div>
+<div><dt>终值倍数提升</dt><dd>1.25x</dd></div>
+<div><dt>投入资金放大</dt><dd>11.87x</dd></div>
+<div><dt>最终资产放大</dt><dd>14.79x</dd></div>
 </dl></article></div>
 </section>
 
 <aside class="notes"><strong>口径说明</strong><ul>
 <li>每月第一个交易日投入固定金额；BTD 信号出现的每个交易日，再投入“信号强度 × 月投入”。</li>
-<li>BTD 组从 14.00% 回撤开始按信号强度补仓；溢价组不判断回撤，每个符合条件的交易日固定补仓 1 份。</li>
-<li>溢价组仅在 159501 同日近似溢价率不高于 5.00% 时补仓；近似溢价率按“收盘价 ÷ 单位净值 − 1”计算。</li>
+<li>两组 BTD 都从 14.00% 回撤开始按信号强度补仓；加倍组在 159501 同日近似溢价率不高于 3.00% 时，将当天份数乘 2。</li>
+<li>近似溢价率按“收盘价 ÷ 单位净值 − 1”计算；溢价高于阈值时仍按原 BTD 强度补仓。</li>
 <li>QDII 同日单位净值通常次日公告，因此溢价过滤属于事后近似回测，不代表当日收盘前可直接获得的实时 IOPV 信号。</li>
-<li>159501 尚未上市、净值尚未公告或日期无法匹配时视为无溢价数据，该日不执行过滤组的 BTD 补仓。</li>
+<li>159501 尚未上市、净值尚未公告或日期无法匹配时不加倍，但仍执行原 BTD 补仓。</li>
 <li>允许碎股，不计手续费、税费和滑点；期末按最新收盘价全部估值。</li>
 <li>IRR 使用实际日期现金流计算；终值倍数为“期末资产 ÷ 累计投入”。</li>
 <li>MDD 使用资金流调整后的指数净值。三种策略都只买不卖且始终持有同一指数，因此 MDD 相同。</li>
 <li>BTD 是持续状态信号，按日执行会产生大量重复补仓，报告中的总投入规模必须与收益指标一起评估。</li>
 </ul></aside>
-<p class="footer">生成时间：2026-07-11 16:54 CST</p>
+<p class="footer">生成时间：2026-07-11 17:10 CST</p>
 </main></body></html>
