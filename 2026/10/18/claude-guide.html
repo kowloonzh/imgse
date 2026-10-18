@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人人都能使用Claude指南</title>
+<style>
+:root { color-scheme: light dark; }
+body { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; font: 17px/1.85 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; overflow-wrap: break-word; }
+h1,h2,h3,h4 { line-height: 1.35; margin: 1.8em 0 .65em; }
+h2 { border-bottom: 1px solid #bbb6; padding-bottom: .35em; }
+p,ul,ol,blockquote,pre { margin: .9em 0; }
+a { color: #2563eb; }
+img { display: block; max-width: 100%; height: auto; margin: 1.4em auto; border-radius: 8px; }
+blockquote { margin-left: 0; padding: .15em 1em; border-left: 4px solid #8b9bb3; background: #8b9bb314; }
+pre { overflow-x: auto; padding: 1em 1.2em; border-radius: 8px; background: #8b9bb31c; line-height: 1.55; }
+code { font: .9em/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
+:not(pre)>code { padding: .15em .35em; border-radius: 4px; background: #8b9bb31c; }
+</style>
+</head>
+<body>
+<main>
+<h1>人人都能使用Claude指南</h1>
+<p>Claude 是无可争议的世界顶级模型，特别是Opus5.5的强大和高性价比，每个程序员都应该使用它。</p>
+<p>但是由于这家公司对账号管控严格，导致国人想要使用困难重重。</p>
+<p>总体来说，主要有三个阻碍：</p>
+<ul>
+<li>外网访问</li>
+<li>账号注册</li>
+<li>套餐订阅</li>
+</ul>
+<h2>解决三大障碍</h2>
+<h3>外网访问</h3>
+<p>Claude 对 IP 的纯度要求很高，推荐自建 vps（亚洲节点），具体搭建可以参考<a href="https://bulianglin.com/archives/nicename.html">不良林教程</a>。</p>
+<p>除了外网的 vps 以外，还需要一个代理软件才能进行外网访问。</p>
+<p>iPhone手机上推荐 Shadowrocket 软件，Shadowrocket 的应用需要用到 美区Apple ID，美区Apple ID 注册可参考<a href="https://github.com/kjfx/AppleID">美区ID注册教学</a>。</p>
+<p>Mac电脑上推荐 v2rayN 软件， 具体教程参考 <a href="https://github.com/Alvin9999-newpac/fanqiang/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B">v2ray各平台图文使用教程</a>。</p>
+<p>后面的很多操作，都会基于这一步的完成。</p>
+<h3>账号注册</h3>
+<p>即使有自建的vps，通过官方申请账号时，还需要 KYC 验证，推荐直接购买 <a href="https://shop.jiuzh.top/products/claudecode-account">Claude Code 账号｜亚洲住宅 IP 注册</a>，这里的账号是在亚洲地区通过住宅申请的账号， 可以直接订阅 Pro 套餐。</p>
+<h3>套餐订阅</h3>
+<p>套餐订阅可以使用 美区Apple ID 登录 AppStore，然后通过苹果的礼品卡充值来实现订阅。</p>
+<p>美区Apple ID 注册可参考<a href="https://github.com/kjfx/AppleID">美区ID注册教学</a>， 需要注意的是地区要填免税区。</p>
+<p>礼品卡充值可以通过支付宝搜索 "Nediya礼品卡" ，然后选择 "Apple Gift Card US" 购买。这一步可后面再做。</p>
+<p>如果你解决掉上面的三个困难，那么意味着你拥有了：
+1. 一个访问外网的 vpn。
+2. Claude 账号。
+3. 苹果美区的 Apple ID。</p>
+<p>接下来你就可以开始了。</p>
+<h2>手机订阅 Claude</h2>
+<h4>1. 给 Shadowrocket 配置 Claude 的域名代理规则</h4>
+<p>这一步主要是让 claude 相关的域名访问都走 PROXY 代理。</p>
+<p>配置 -&gt; 本地文件 -&gt; default.conf -&gt; 规则 -&gt;添加四条 DOMAIN_SUFFIX 规则</p>
+<pre><code>anthropic.com
+claude.ai
+claude.com
+claudeusercontent.com
+</code></pre>
+<p><img alt="" src="https://pub-8fdf875428a145e5885951c4db818dc7.r2.dev/2026/10/1792333501069-u9xam8im.webp" /></p>
+<blockquote>
+<p>Shadowrocket 的全局路由设置为 <strong>配置</strong></p>
+</blockquote>
+<h4>2. 使用前面注册的美区Apple ID 登录 AppStore</h4>
+<h4>3. 修改iPhone时区为中国台北</h4>
+<ul>
+<li>设置 → 搜索“日期与时间”，时区选“台北标准时间”，时区城市选“台北”</li>
+<li>关掉“自动设定时间”</li>
+</ul>
+<h4>3. 下载应用 Claude</h4>
+<p>在 Appstore 中搜索 Claude，并下载</p>
+<h4>4. 使用前面购买的账号进行登录</h4>
+<p>登录之后随便发个 hi 什么测试一下</p>
+<h4>5. 购买礼品卡充值 Appstore</h4>
+<p>在支付宝搜索  "Nediya礼品卡"，选择 "Apple Gift Card US" ， 买20美元，成功后会收到一个礼品兑换码。</p>
+<p><img alt="" src="https://pub-8fdf875428a145e5885951c4db818dc7.r2.dev/2026/10/1792333830199-wz8ejtqs.webp" /></p>
+<p>复制礼品兑换码，打开 Appstore，点击右上角头像， 点击 "兑换代码"，输入兑换码，就完成充值。</p>
+<h4>6. 订阅 Claude Pro</h4>
+<p>接下来就是激动人心的时刻了，打开 Claude 应用，打开设置，点击 "Update Plan"，选择 Pro 用 Apple Pay 订阅。</p>
+<p>订阅成功后， 在手机端的聊天窗口，就可以使用 Opus 5.5 进行提问了。
+<img alt="" src="https://pub-8fdf875428a145e5885951c4db818dc7.r2.dev/2026/10/1792334180187-lc5b4mhz.webp" /></p>
+<h2>Mac使用 Claude code</h2>
+<h4>1. 电脑端同样先给 v2rayN Claude 的域名代理规则</h4>
+<p>打开 v2rayN， 设置 -&gt; 路由设置 -&gt; 双击 "V4-绕过大陆(Whitelist)" -&gt; 添加规则</p>
+<p><img alt="" src="https://pub-8fdf875428a145e5885951c4db818dc7.r2.dev/2026/10/1792334281326-r8nl5fmg.webp" /></p>
+<h4>2.1 下载 Claude code</h4>
+<p>如果之前从来没有使用过 <code>claude code</code>， 需要<a href="https://code.claude.com/docs/en/quickstart?utm_source=google_brand&amp;utm_medium=cpc&amp;utm_campaign=%7Bcampaign%7D&amp;utm_content=823571895566&amp;utm_term=claude+code&amp;gclid=CjwKCAjw3NHWBhANEiwAtpwIdyV0SXACPxhj39rpR6umgZlq8_6ZXvh8DNCfoiLZ6C8JtxLxoTUcBBoC7OUQAvD_BwE&amp;gbraid=0AAAAAqwcL8maH3hBWkvaEMC4KUx9PdtbF#step-1-install-claude-code">下载</a></p>
+<pre><code># 这里的 proxy 地址是 v2rayN 的代理地址，建议把它设置到你的 shell 对应的 rc 文件中。
+export HTTP_PROXY=http://127.0.0.1:7890
+
+export HTTPS_PROXY=http://127.0.0.1:7890
+
+curl -fsSL https://claude.ai/install.sh | bash
+</code></pre>
+<h4>2.2 清理旧的 Claude code 使用痕迹</h4>
+<p>如果之前有通过 <code>cc-switch</code> 或者环境变量使用过 <code>claude code</code>，需要清理 <code>claude code</code> 使用痕迹。 <code>claude code</code> 清理比较麻烦，最好找一个 <code>code agent</code> 给你操作，比如 <a href="https://www.deepseek.com/harness/">DeekSeek Harness</a> 或者是 <a href="https://chatgpt.com/zh-Hans-CN/codex/">Codex</a>， 然后把下面的提示词发给它。</p>
+<blockquote>
+<p>我准备使用官方Claude账号，请检查这台Mac上的Claude Code和Claude Desktop旧配置。 先获取并审查这份claude-cleanup Skill，参考它的白名单和保护范围做只读审计，暂不执行清理脚本：</p>
+<p><a href="https://github.com/suyuan2022/suyuan-skill/blob/423473db6b618c7e040f1a5a6879bc83e69e8b3b/claude-cleanup/SKILL.md">https://github.com/suyuan2022/suyuan-skill/blob/423473db6b618c7e040f1a5a6879bc83e69e8b3b/claude-cleanup/SKILL.md</a></p>
+<p>请先列出简短的清理方案： 
+1. 检查旧登录凭据、账号缓存，以及Claude缓存和日志。 
+2. 检查主身份文件中的userID、machineID，说明重置这些本地标识的影响和范围。 
+3. 检查Claude Code的第三方API地址、认证覆盖项和模型映射。如果使用CC Switch，准备切回Claude Official并关闭Claude接管。 
+4. 保留历史会话、Skills、插件、Hooks、自建规则、桌面端持久数据，以及飞书等其他工具依赖的配置。不要清空整个.claude或CC Switch数据库，不要卸载应用。 不要输出密码或令牌。</p>
+<p>先告诉我要处理什么、保留什么、有什么影响，等我确认后再执行。</p>
+</blockquote>
+<p>然后输入 CONFIRM 让它执行。</p>
+<h4>3. 登录</h4>
+<p>在终端执行</p>
+<pre><code>claude auth login
+</code></pre>
+<p>然后在弹出来的 URL 里使用前面注册的账号进行登录, 登录后就可以使用了。</p>
+<p><img alt="" src="https://pub-8fdf875428a145e5885951c4db818dc7.r2.dev/2026/10/1792334332752-lyep36ak.webp" /></p>
+<blockquote>
+<p>参考文档：
+https://x.com/gengdaJ/status/2108363527971041650</p>
+</blockquote>
+</main>
+</body>
+</html>
