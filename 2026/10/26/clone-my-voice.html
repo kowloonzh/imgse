@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>克隆自己的声音：一次从调研到放弃的完整记录</title>
+<meta name="description" content="结论先说：我花了一个晚上用 CosyVoice2 克隆了自己的声音，音色很像，但听感不如 edge-tts 内置的“晓晓”，最后放弃了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="克隆自己的声音：一次从调研到放弃的完整记录">
+<meta property="og:description" content="结论先说：我花了一个晚上用 CosyVoice2 克隆了自己的声音，音色很像，但听感不如 edge-tts 内置的“晓晓”，最后放弃了。">
+<meta property="og:url" content="https://kowloonzh.github.io/imgse/2026/10/26/clone-my-voice.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="克隆自己的声音：一次从调研到放弃的完整记录">
+<meta name="twitter:description" content="结论先说：我花了一个晚上用 CosyVoice2 克隆了自己的声音，音色很像，但听感不如 edge-tts 内置的“晓晓”，最后放弃了。">
+<meta name="twitter:creator" content="@kowloonzh">
+<style>
+  :root { --bg:#fbfaf7; --fg:#1f1d1a; --muted:#6b665e; --rule:#e6e1d8; --accent:#c2410c; --code:#f1ede5; --th:#f4f0e8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16150f; --fg:#ece7dc; --muted:#a39d91; --rule:#34302a; --accent:#fb923c; --code:#25221c; --th:#211e18; }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+    font: 17px/1.8 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 { font-size: 30px; line-height: 1.35; margin: 0 0 12px; letter-spacing: .01em; }
+  .byline { color: var(--muted); font-size: 14px; margin-bottom: 36px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+  .byline a { color: var(--muted); }
+  h2 { font-size: 21px; margin: 44px 0 12px; padding-left: 12px; border-left: 4px solid var(--accent); line-height: 1.4; }
+  p { margin: 0 0 16px; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  strong { font-weight: 650; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86em; background: var(--code); padding: 1px 6px; border-radius: 4px; }
+  blockquote { margin: 0 0 18px; padding: 10px 16px; border-left: 3px solid var(--rule); color: var(--muted); background: var(--code); border-radius: 0 6px 6px 0; }
+  blockquote p { margin: 0; }
+  ul, ol { padding-left: 1.4em; margin: 0 0 18px; }
+  li { margin: 4px 0; }
+  .tw { overflow-x: auto; margin: 4px 0 22px; border: 1px solid var(--rule); border-radius: 8px; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; line-height: 1.6; }
+  th, td { padding: 9px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+  th { background: var(--th); font-weight: 650; white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }
+  @media (max-width: 480px) { body { font-size: 16px; } main { padding-top: 32px; } h1 { font-size: 25px; } table { font-size: 14px; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>克隆自己的声音：一次从调研到放弃的完整记录</h1>
+<div class="byline">2026 年 10 月 26 日 · <a href="https://x.com/kowloonzh" target="_blank" rel="noopener">@kowloonzh</a></div>
+<h2>缘起</h2>
+<p>结论先说：我花了一个晚上用 CosyVoice2 克隆了自己的声音，音色很像，但听感不如 edge-tts 内置的“晓晓”，最后放弃了。</p>
+<p>起因是我用 Claude Code（模型 Claude Opus 5.5）做了一支 30 秒的手绘动画科普短视频，讲躺着刷手机时怎么用一个枕头放松肩颈。视频的配音用的是 edge-tts 的 zh-CN-XiaoxiaoNeural（晓晓）。</p>
+<p>我想把配音换成自己的声音，让视频更像“我在讲”。于是从调研开始，一路做到了安装、克隆和试听。</p>
+<h2>调研</h2>
+<p>edge-tts 本身不能克隆声音，要用自己的声音必须换工具。<a href="https://github.com/rany2/edge-tts" target="_blank" rel="noopener">edge-tts</a> 是一个非官方开源库，调用的是 Edge 浏览器“朗读”功能背后的微软在线语音，只能选预设声音、调语速和音调。</p>
+<p>可选的方案分两类：</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>类型</th>
+<th>怎么克隆</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/FunAudioLLM/CosyVoice" target="_blank" rel="noopener">CosyVoice</a>（阿里）</td>
+<td>开源，本地运行</td>
+<td>零样本：10–30 秒参考音频</td>
+<td>中文效果好，可保存说话人重复使用</td>
+</tr>
+<tr>
+<td><a href="https://github.com/RVC-Boss/GPT-SoVITS" target="_blank" rel="noopener">GPT-SoVITS</a></td>
+<td>开源，本地运行</td>
+<td>微调：约 1 分钟录音训练一次</td>
+<td>中文社区最流行，相似度高</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SWivid/F5-TTS" target="_blank" rel="noopener">F5-TTS</a></td>
+<td>开源，本地运行</td>
+<td>零样本：几秒参考音频</td>
+<td>中英文都行</td>
+</tr>
+<tr>
+<td><a href="https://github.com/index-tts/index-tts" target="_blank" rel="noopener">IndexTTS</a>（B 站）</td>
+<td>开源，本地运行</td>
+<td>零样本</td>
+<td>多音字处理好</td>
+</tr>
+<tr>
+<td>火山引擎/豆包、MiniMax、ElevenLabs</td>
+<td>商用在线服务</td>
+<td>录几十秒，拿到声音 ID</td>
+<td>省事，按量付费</td>
+</tr>
+</tbody>
+</table></div>
+<p>我最关心的是“克隆一次，以后直接用”。零样本方案完全不训练，只是在生成时参考一段录音；模型只在生成那一刻运行，跑完就退出，不用一直挂着。</p>
+<p>最后选了 CosyVoice2：中文效果好，支持把声音保存成说话人 ID 反复调用，录音和声纹都留在本机。</p>
+<h2>安装</h2>
+<p>在 Apple M2、16GB 内存的 Mac 上装好 CosyVoice2，前后踩了四个坑。我给它单独建了一个 Python 3.10 环境（用 uv），不影响电脑上已有的环境。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>解决办法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>找不到 macOS 版 onnxruntime 1.18.0</td>
+<td>官方依赖清单带了 Linux 显卡的 CUDA 包源，uv 只从第一个找到包的源里选版本</td>
+<td>去掉两行 <code>--extra-index-url</code>，生成 <code>requirements-mac.txt</code></td>
+</tr>
+<tr>
+<td>openai-whisper 构建失败</td>
+<td>它只有源码包，构建要用 <code>pkg_resources</code>，新版 setuptools 已经删了</td>
+<td>先在主环境装旧版 setuptools，没用：uv 在隔离环境里构建</td>
+</tr>
+<tr>
+<td>同上，第二次</td>
+<td>隔离构建环境仍是新版 setuptools</td>
+<td>用 <code>--build-constraint</code> 把构建用的 setuptools 锁在 70 以下</td>
+</tr>
+<tr>
+<td>运行时报 <code>No module named 'pkg_resources'</code></td>
+<td>运行时也要用它，而主环境的 setuptools 被升到了 84 版</td>
+<td>把主环境的 setuptools 也降到 70 以下</td>
+</tr>
+</tbody>
+</table></div>
+<p>模型从 ModelScope 下载，CosyVoice2-0.5B 一共 5.3GB。装好后 torch 是 2.3.1，苹果芯片的 MPS 加速显示可用。</p>
+<h2>测试</h2>
+<p>用官方自带的示例音频（一段女声）跑通了零样本克隆：模型加载 46 秒，生成 6.8 秒的音频用了 17.7 秒。</p>
+<p>测试的句子是视频里的一句口播：“把枕头横过来，平躺上去。让枕头上沿托住脖子，下沿垫在胸椎下面。”声音正常，没有读错。</p>
+<p>按这个速度，生成一段 30 秒的口播大约要 1.5 分钟，再加上每次加载模型的等待。后来实际生成整段口播，连加载一共用了 3 分钟左右。</p>
+<h2>录音与克隆</h2>
+<p>我用 Mac 自带的“语音备忘录”录了 24 秒，注册成说话人 <code>my_voice</code> 之后，生成时就不再需要录音，也不用训练。</p>
+<p>录的是一段预先写好的文字：</p>
+<blockquote>
+<p>最近我在试着用 AI 做视频，从写稿、配音到画面，全部交给它来完成。说实话，比我想象中要好玩，也比我想象中要麻烦一点。不过做出来的那一刻，还是挺有成就感的。</p>
+</blockquote>
+<p>录音有两个小问题：</p>
+<ul>
+<li><strong>开头 4.1 秒没说话</strong>，只有底噪和两下点击声。自动裁静音被点击声骗过了，一点没裁掉，是我试听时发现的。按音量曲线找到真正开口的位置，只保留 4.1–22.2 秒，共 18.3 秒。</li>
+<li><strong>有轻微削顶</strong>：真峰值 +1.45 dBTP，但只有 30 个采样点，占 0.005%，听感上察觉不到。</li>
+</ul>
+<p>开头的空白会影响克隆效果：用没裁的录音生成的口播，开头也空了 0.7 秒。裁掉后重新注册，生成的口播从 0.1 秒就开始说话。</p>
+<h2>试听与调优</h2>
+<p>用我的声音念完整段视频口播（29.6 秒），听下来是这样的：</p>
+<ul>
+<li><strong>音色：很像我。</strong></li>
+<li><strong>停顿：还可以。</strong></li>
+<li><strong>语气：不自然，语速偏快。</strong> 这是原速生成的，没有加速，是模型模仿我录音里的语速。</li>
+</ul>
+<p>为了改语气，用开头三句做了三个原速对比样本：</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>版本</th>
+<th>做法</th>
+<th>时长</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 原样</td>
+<td>直接用注册好的声音</td>
+<td>10.4 秒</td>
+<td>最自然</td>
+</tr>
+<tr>
+<td>B 聊天语气</td>
+<td>加指令“用轻松自然、像跟朋友聊天一样的语气说”</td>
+<td>8.7 秒</td>
+<td>更快了</td>
+</tr>
+<tr>
+<td>C 温和语气</td>
+<td>加指令“用温和、放松、稍微慢一点的语气说”</td>
+<td>10.2 秒</td>
+<td>不如 A</td>
+</tr>
+</tbody>
+</table></div>
+<p>A 反而最自然。我判断问题不在模型，而在参考录音：那段文字太书面，我读得像念稿，模型就学会了念稿的语气。</p>
+<p>于是换成视频里最口语化的一段重新录：“你是不是也这样？窝在床上低头刷手机，一刷就是一小时……”，当成跟朋友吐槽来说。</p>
+<h2>放弃与清理</h2>
+<p>重新录了一遍再试，我的克隆声音还是不如 edge-tts 内置的晓晓，所以视频继续用晓晓配音。</p>
+<p>还有一个顺带的问题：我说话本来偏快，克隆声音原速就要 29.6 秒，放慢后会超过朋友圈 30 秒的视频上限。</p>
+<p>这次试验留下的东西全部删掉了，一共腾出约 7.3GB：</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>内容</th>
+<th>大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CosyVoice 程序、Python 环境、模型和我的声纹特征</td>
+<td>6.8GB</td>
+</tr>
+<tr>
+<td>Whisper small 语音识别模型</td>
+<td>464MB</td>
+</tr>
+<tr>
+<td>wetext 文本规范化组件</td>
+<td>48MB</td>
+</tr>
+<tr>
+<td>我的录音副本和所有克隆样本</td>
+<td>13MB</td>
+</tr>
+</tbody>
+</table></div>
+<p>录音和声纹自始至终只存在本机，没有上传到任何地方。</p>
+<h2>复盘</h2>
+<p>声音克隆在技术上已经很成熟，音色不是难点，难的是语气。</p>
+<ol>
+<li><strong>参考录音决定了语气。</strong> 模型会模仿录音里的语速和腔调。念稿式的录音就会生成念稿式的声音，最好用平时说话的口吻录。</li>
+<li><strong>录音要干净。</strong> 开头的空白、点击声都会被学进去，点开始后一秒内开口，说完马上停。</li>
+<li><strong>语气指令不一定有用。</strong> 加了“像跟朋友聊天”“慢一点”的指令，听起来反而不如直接克隆。</li>
+<li><strong>在 Mac 上装开源模型要有耐心。</strong> 官方依赖清单默认面向 Linux 显卡，要自己处理包源和版本问题。</li>
+<li><strong>一个好的预设声音往往更实用。</strong> 对一支 30 秒的科普短视频来说，听感自然比“是不是我的声音”更重要。</li>
+</ol>
+<p>如果以后再试，可以考虑两个方向：用 CosyVoice 3.0（官方说韵律比 2.0 自然），或者用 GPT-SoVITS 训练一个专属模型。</p>
+</article>
+<footer>完整记录了一次在 Mac 上用 CosyVoice2 克隆自己声音的尝试。欢迎在 X 上找我交流：<a href="https://x.com/kowloonzh" target="_blank" rel="noopener">@kowloonzh</a></footer>
+</main>
+</body>
+</html>
